@@ -11,7 +11,7 @@ import UIKit
 class SecondViewController: UIViewController {
 
     @IBOutlet var drawPage: UIImageView!
-    //change to imageView
+    @IBOutlet weak var clear: UIButton!
    
     var lastPoint = CGPoint.zero
     var moved = false
@@ -50,8 +50,7 @@ class SecondViewController: UIViewController {
         UIGraphicsEndImageContext()
         
     }
-    
-    
+
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         moved = true
@@ -71,11 +70,15 @@ class SecondViewController: UIViewController {
         }
     }
     
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    @IBAction func clear(_ sender: UIButton) {
+        drawPage.image = nil
+    }
 
 }
 
