@@ -10,9 +10,16 @@ import UIKit
 
 class SecondViewController1: UIViewController {
 
+    @IBOutlet weak var nameLabel: UILabel!
+    var stringPassed = ""
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        NSLog(nameLabel.text!)
+        nameLabel.text = stringPassed
+        NSLog(nameLabel.text!)
+        NSLog("dog")
         // Do any additional setup after loading the view.
     }
 
