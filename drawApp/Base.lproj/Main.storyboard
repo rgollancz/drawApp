@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -63,9 +64,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nIk-e2-GED">
-                                <rect key="frame" x="0.0" y="62" width="414" height="625"/>
+                                <rect key="frame" x="-7" y="51" width="428" height="636"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="nIk-e2-GED" secondAttribute="height" multiplier="414:625" id="Nyi-pQ-SPw"/>
+                                    <constraint firstAttribute="width" secondItem="nIk-e2-GED" secondAttribute="height" multiplier="10.75:16" id="Nyi-pQ-SPw"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DS4-w9-mjH">
@@ -79,9 +80,10 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="nIk-e2-GED" secondAttribute="bottom" id="6d1-Yv-JV0"/>
                             <constraint firstItem="nIk-e2-GED" firstAttribute="width" secondItem="QS5-Rx-YEW" secondAttribute="width" id="MLh-L4-tuY"/>
                             <constraint firstItem="nIk-e2-GED" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="Qvv-44-Wlu"/>
-                            <constraint firstItem="nIk-e2-GED" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="42" id="vjT-bc-fCz"/>
+                            <constraint firstItem="nIk-e2-GED" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" multiplier="0.8" constant="35" id="vjT-bc-fCz"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
