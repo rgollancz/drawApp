@@ -27,13 +27,13 @@ class SecondViewController: UIViewController {
         moved = false
         
         if let touch = touches.first {
-           lastPoint = touch.location(in: self.view)
+           lastPoint = touch.location(in: self.drawPage)
         }
     }
     
     func drawPicture(fromPoint:CGPoint, toPoint:CGPoint) {
-        UIGraphicsBeginImageContextWithOptions(self.view.frame.size, false, 0.0)
-        drawPage.image?.draw(in: CGRect(x: 0, y:0, width:self.view.frame.width, height:self.view.frame.height))
+        UIGraphicsBeginImageContextWithOptions(self.drawPage.bounds.size, false, 0.0)
+        drawPage.image?.draw(in: CGRect(x: 0, y:0, width:self.drawPage.bounds.width, height:self.drawPage.bounds.height))
         let context = UIGraphicsGetCurrentContext()
         
         context?.move(to: CGPoint(x: fromPoint.x, y: fromPoint.y))
@@ -56,7 +56,7 @@ class SecondViewController: UIViewController {
         moved = true
         
         if let touch = touches.first {
-            let currentPoint = touch.location(in: self.view)
+            let currentPoint = touch.location(in: self.drawPage)
             drawPicture(fromPoint: lastPoint, toPoint: currentPoint)
             
             lastPoint = currentPoint
