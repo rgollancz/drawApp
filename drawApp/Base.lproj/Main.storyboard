@@ -54,6 +54,7 @@
                     <connections>
                         <outlet property="myLabel" destination="cp0-sc-PHs" id="5hy-Ft-ojd"/>
                         <outlet property="nameText" destination="gnz-9c-L4v" id="LQ1-Q9-owa"/>
+                        <outlet property="nameTextField" destination="gnz-9c-L4v" id="x88-fm-7GR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>

@@ -11,12 +11,12 @@ import UIKit
 class SecondViewController1: UIViewController {
 
     @IBOutlet weak var nameLabel: UILabel!
-    var badText: String?
+    var stringPassed: String?
    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.nameLabel.text = badText
+        self.nameLabel.text = stringPassed
        
         // Do any additional setup after loading the view.
     }

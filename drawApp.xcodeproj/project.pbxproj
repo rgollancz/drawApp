@@ -11,7 +11,7 @@
 		DCD84BCA1DF6D743009B298C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD84BC91DF6D743009B298C /* AppDelegate.swift */; };
 		DCD84BCC1DF6D743009B298C /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD84BCB1DF6D743009B298C /* FirstViewController.swift */; };
 		DCD84BCE1DF6D743009B298C /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD84BCD1DF6D743009B298C /* SecondViewController.swift */; };
-		DCD84BD11DF6D743009B298C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCD84BCF1DF6D743009B298C /* Main.storyboard */; };
+		DCD84BD11DF6D743009B298C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCD84BCF1DF6D743009B298C /* Main.storyboard */; settings = {ASSET_TAGS = (nameText, ); }; };
 		DCD84BD31DF6D743009B298C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCD84BD21DF6D743009B298C /* Assets.xcassets */; };
 		DCD84BD61DF6D743009B298C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCD84BD41DF6D743009B298C /* LaunchScreen.storyboard */; };
 		DCD84BE11DF6D743009B298C /* drawAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD84BE01DF6D743009B298C /* drawAppTests.swift */; };
@@ -193,6 +193,9 @@
 		DCD84BBE1DF6D743009B298C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					nameText,
+				);
 				LastSwiftUpdateCheck = 0810;
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = RAKE;
