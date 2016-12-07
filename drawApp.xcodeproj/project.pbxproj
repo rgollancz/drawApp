@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32B58F491DF6E0F400F28944 /* SecondViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B58F481DF6E0F400F28944 /* SecondViewController1.swift */; };
 		DCD84BCA1DF6D743009B298C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD84BC91DF6D743009B298C /* AppDelegate.swift */; };
 		DCD84BCC1DF6D743009B298C /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD84BCB1DF6D743009B298C /* FirstViewController.swift */; };
 		DCD84BCE1DF6D743009B298C /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD84BCD1DF6D743009B298C /* SecondViewController.swift */; };
-		DCD84BD11DF6D743009B298C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCD84BCF1DF6D743009B298C /* Main.storyboard */; };
+		DCD84BD11DF6D743009B298C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCD84BCF1DF6D743009B298C /* Main.storyboard */; settings = {ASSET_TAGS = (nameText, ); }; };
 		DCD84BD31DF6D743009B298C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCD84BD21DF6D743009B298C /* Assets.xcassets */; };
 		DCD84BD61DF6D743009B298C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCD84BD41DF6D743009B298C /* LaunchScreen.storyboard */; };
 		DCD84BE11DF6D743009B298C /* drawAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD84BE01DF6D743009B298C /* drawAppTests.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		32B58F481DF6E0F400F28944 /* SecondViewController1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController1.swift; sourceTree = "<group>"; };
 		DCD84BC61DF6D743009B298C /* drawApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = drawApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCD84BC91DF6D743009B298C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCD84BCB1DF6D743009B298C /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			children = (
 				DCD84BC91DF6D743009B298C /* AppDelegate.swift */,
 				DCD84BCB1DF6D743009B298C /* FirstViewController.swift */,
+				32B58F481DF6E0F400F28944 /* SecondViewController1.swift */,
 				DCD84BCD1DF6D743009B298C /* SecondViewController.swift */,
 				DCD84BCF1DF6D743009B298C /* Main.storyboard */,
 				DCD84BD21DF6D743009B298C /* Assets.xcassets */,
@@ -190,6 +193,9 @@
 		DCD84BBE1DF6D743009B298C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					nameText,
+				);
 				LastSwiftUpdateCheck = 0810;
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = RAKE;
@@ -265,6 +271,7 @@
 			files = (
 				DCD84BCE1DF6D743009B298C /* SecondViewController.swift in Sources */,
 				DCD84BCA1DF6D743009B298C /* AppDelegate.swift in Sources */,
+				32B58F491DF6E0F400F28944 /* SecondViewController1.swift in Sources */,
 				DCD84BCC1DF6D743009B298C /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
