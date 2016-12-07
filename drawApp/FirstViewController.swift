@@ -12,64 +12,55 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
     
     
     //MARK: Properties
-
-    @IBOutlet weak var nameTextField: UITextField!
-   
+    
+    @IBOutlet weak var nameText: UITextField!
     var badText : String?
+    
     
     @IBOutlet weak var myLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameTextField.delegate = self
-        NSLog("hello0")
+        nameText.delegate = self
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "showSecondViewController" {
-//            if let destination = segue.destination as? SecondViewController1 {
-//                let dog = "woof"
-//                destination.badText = dog
-//                
-//            }
-//        }
-//    }
-
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showSecondViewController" {
+            if let destination = segue.destination as? SecondViewController1 {
+                destination.badText = self.badText
+                
+            }
+        }
+    }
+    
+    
     //MARK: UITextFieldDelegate
+    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+        
+        
     }
-    
     func textFieldDidEndEditing(_ textField: UITextField) {
-         badText = textField.text
-         NSLog(badText!)
+        badText = textField.text
     }
     
- 
-   
+    
     //MARK: Actions
     
     @IBAction func playButton(_ sender: Any) {
         
-    
-//        performSegue(withIdentifier: "showSecondViewController", sender: sender )
         
-        let myVC = storyboard?.instantiateViewController(withIdentifier: "SecondViewController1") as! SecondViewController1
+        performSegue(withIdentifier: "showSecondViewController", sender: sender )
         
-        myVC.stringPassed = badText
         
-        navigationController?.pushViewController(myVC, animated: true)
-       
-       
-  }
+    }
 }
-
