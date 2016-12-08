@@ -38,7 +38,6 @@ class drawAppUITests: XCTestCase {
         enterNameTextField.typeText("c")
         enterNameTextField.typeText("e")
         enterNameTextField.typeText("y")
-        app.buttons["Return"].tap()
         app.typeText("\n")
     }
     
