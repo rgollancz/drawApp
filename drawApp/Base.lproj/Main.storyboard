@@ -95,9 +95,16 @@
                                     <action selector="clear:" destination="NU5-Hi-tNp" eventType="touchUpInside" id="wFg-bS-wJP"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nni-Hp-HCg">
+                                <rect key="frame" x="54" y="625" width="306" height="62"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="31"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="rPA-KK-7Ed" firstAttribute="top" secondItem="nni-Hp-HCg" secondAttribute="bottom" id="62N-K1-mEZ"/>
                             <constraint firstItem="rHM-28-mHV" firstAttribute="leading" secondItem="fXN-j9-jgj" secondAttribute="leadingMargin" id="FB8-Nx-SMc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vAC-W5-FyP" secondAttribute="trailing" constant="-27" id="Hj4-Lr-GrK"/>
                             <constraint firstItem="vAC-W5-FyP" firstAttribute="leading" secondItem="fXN-j9-jgj" secondAttribute="leadingMargin" constant="-26" id="Vd4-hL-3Jr"/>
@@ -109,6 +116,7 @@
                     </view>
                     <connections>
                         <outlet property="clear" destination="rHM-28-mHV" id="ldl-0a-I9K"/>
+                        <outlet property="currentWord" destination="nni-Hp-HCg" id="HSp-no-Rwz"/>
                         <outlet property="drawPage" destination="vAC-W5-FyP" id="Oky-vL-DbW"/>
                         <outlet property="nameLabel" destination="CkQ-NG-xkm" id="1gM-RF-OOp"/>
                     </connections>
