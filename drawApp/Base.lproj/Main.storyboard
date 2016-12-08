@@ -48,7 +48,7 @@
                                 </state>
                                 <connections>
                                     <action selector="playButton:" destination="9pv-A4-QxB" eventType="touchUpInside" id="EKD-Cf-ISM"/>
-                                    <segue destination="NU5-Hi-tNp" kind="show" identifier="showSecondViewController" id="GSD-Vg-Y1A"/>
+                                    <segue destination="NU5-Hi-tNp" kind="show" identifier="showDrawViewController" id="GSD-Vg-Y1A"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -66,7 +66,7 @@
         <!--Second View Controller-->
         <scene sceneID="NhA-5g-Car">
             <objects>
-                <viewController storyboardIdentifier="DrawViewController" title="Second View Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NU5-Hi-tNp" customClass="DrawViewController" customModule="drawApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Second View Controller" id="NU5-Hi-tNp" customClass="DrawViewController" customModule="drawApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="g3Y-2t-fxm"/>
                         <viewControllerLayoutGuide type="bottom" id="rPA-KK-7Ed"/>
@@ -92,7 +92,7 @@
                                 </constraints>
                                 <state key="normal" title="Clear"/>
                                 <connections>
-                                    <action selector="clear:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="2Ey-f1-fnu"/>
+                                    <action selector="clear:" destination="NU5-Hi-tNp" eventType="touchUpInside" id="wFg-bS-wJP"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -108,6 +108,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="clear" destination="rHM-28-mHV" id="ldl-0a-I9K"/>
                         <outlet property="drawPage" destination="vAC-W5-FyP" id="Oky-vL-DbW"/>
                         <outlet property="nameLabel" destination="CkQ-NG-xkm" id="1gM-RF-OOp"/>
                     </connections>
