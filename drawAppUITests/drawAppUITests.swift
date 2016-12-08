@@ -29,30 +29,40 @@ class drawAppUITests: XCTestCase {
     }
     
     
-    func testwriteName() {
-        
-        let app = XCUIApplication()
-        let enterNameTextField = app.textFields["Enter name"]
-        enterNameTextField.tap()
-        enterNameTextField.typeText("a")
-        enterNameTextField.typeText("g")
-        enterNameTextField.typeText("a")
-        enterNameTextField.typeText("t")
-        enterNameTextField.typeText("h")
-        enterNameTextField.typeText("a")
-        app.typeText("\n")
-        
-    }
-    
     func testplayButton() {
+        
         let app = XCUIApplication()
         let enterNameTextField = app.textFields["Enter name"]
         enterNameTextField.tap()
         enterNameTextField.typeText("m")
         app.typeText("\n")
         app.buttons["PLAY!"].tap()
+    
     }
     
+    func testwriteName() {
+        
+        let app = XCUIApplication()
+        let enterNameTextField = app.textFields["Enter name"]
+        enterNameTextField.tap()
+        app.textFields["Enter name"].typeText("agatha")
+        app.typeText("\n")
+        XCTAssertNotNil(enterNameTextField)
+    }
+    
+    func testNameShowsInSecondView() {
+        let app = XCUIApplication()
+        let enterNameTextField = app.textFields["Enter name"]
+        enterNameTextField.tap()
+        app.textFields["Enter name"].typeText("agatha")
+        app.typeText("\n")
+        app.buttons["PLAY!"].tap()
+        let name = app.staticTexts["agatha"]
+        XCTAssertNotNil(name)
+    
+        
+    
+    }
     
     
 }
