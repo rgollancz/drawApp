@@ -31,8 +31,8 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showSecondViewController" {
-            if let destination = segue.destination as? SecondViewController1 {
+        if segue.identifier == "showDrawViewController" {
+            if let destination = segue.destination as? DrawViewController {
                 destination.badText = self.badText
                 
             }
@@ -59,7 +59,7 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
     @IBAction func playButton(_ sender: Any) {
         
         
-        performSegue(withIdentifier: "showSecondViewController", sender: sender )
+        performSegue(withIdentifier: "showDrawViewController", sender: sender )
         
         
     }
