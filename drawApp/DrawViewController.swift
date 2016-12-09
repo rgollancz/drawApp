@@ -106,7 +106,7 @@ class DrawViewController: UIViewController {
     
     
     @IBAction func clear(_ sender: UIButton) {
-        print(coordinatesArray)
+//        print(coordinatesArray)
         drawPage.image = nil
     }
     
