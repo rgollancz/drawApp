@@ -95,6 +95,7 @@
                                 <state key="normal" title="Clear"/>
                                 <connections>
                                     <action selector="clear:" destination="NU5-Hi-tNp" eventType="touchUpInside" id="wFg-bS-wJP"/>
+                                    <action selector="newClear:" destination="NU5-Hi-tNp" eventType="touchUpInside" id="ydB-KS-Cds"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nni-Hp-HCg">
