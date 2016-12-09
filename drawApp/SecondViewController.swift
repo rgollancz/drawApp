@@ -58,16 +58,6 @@ class SecondViewController: UIViewController {
     }
     
     
-//    func printCoo() {
-//        for (x, y) in coordinatesArray {
-////            print(x.0)
-////            print(x.1)
-//            print(y.0)
-//            print(y.1)
-//        }
-//    }
-//    
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
