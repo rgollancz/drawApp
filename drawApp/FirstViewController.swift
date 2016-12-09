@@ -57,10 +57,6 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
     //MARK: Actions
     
     @IBAction func playButton(_ sender: Any) {
-        
-        
         performSegue(withIdentifier: "showDrawViewController", sender: sender )
-        
-        
     }
 }
