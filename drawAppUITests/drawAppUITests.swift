@@ -28,9 +28,29 @@ class drawAppUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    func testwriteName() {
+        let app = XCUIApplication()
+        let enterNameTextField = app.textFields["Enter name"]
+        enterNameTextField.tap()
+        enterNameTextField.typeText("m")
+        enterNameTextField.typeText("a")
+        enterNameTextField.typeText("c")
+        enterNameTextField.typeText("e")
+        enterNameTextField.typeText("y")
+        app.typeText("\n")
     }
+    
+    func testplayButton() {
+        let app = XCUIApplication()
+        let enterNameTextField = app.textFields["Enter name"]
+        enterNameTextField.tap()
+        app.keys["m"].tap()
+        enterNameTextField.typeText("m")
+        app.buttons["Return"].tap()
+        app.typeText("\n")
+        app.buttons["PLAY!"].tap()
+    }
+    
     
 }
