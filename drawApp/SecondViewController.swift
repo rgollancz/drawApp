@@ -13,8 +13,8 @@ class SecondViewController: UIViewController {
     @IBOutlet weak var picturePage: UIImageView!
     
     var coordinatesArray = [DrawingCoordinate]()
-    var fromCo = (153.0, 180.0)
-    var toCo = (173.0, 180.0)
+    var fromCo = (from: 153.0, to: 180.0)
+    var toCo = (from: 173.0, to: 180.0)
     
     
     override func viewDidLoad() {
@@ -39,8 +39,8 @@ class SecondViewController: UIViewController {
             picturePage.image?.draw(in: CGRect(x: 0, y:0, width:self.picturePage.bounds.width, height:self.picturePage.bounds.height))
 
         let context = UIGraphicsGetCurrentContext()
-        context?.move(to: CGPoint(x: fromCo.0, y: fromCo.1))
-        context?.addLine(to: CGPoint(x: toCo.0, y: toCo.1))
+        context?.move(to: CGPoint(x: fromCo.from, y: fromCo.to))
+        context?.addLine(to: CGPoint(x: toCo.from, y: toCo.to))
      
         context?.setBlendMode(CGBlendMode.color)
         context?.setLineCap(CGLineCap.round)
