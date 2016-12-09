@@ -14,26 +14,36 @@ class DrawViewController: UIViewController {
     @IBOutlet weak var drawPage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var clear: UIButton!
+    @IBOutlet var currentWord: UILabel!
 
     var badText: String?
     var lastPoint = CGPoint.zero
     var moved = false
+    let wordArray: [String] = ["CAT","TEAPOT","APPLE","BALLOON","NICKELBACK","GIRAFFE","HEADPHONES","MOUNTAIN","ROCK CLIMBING","FAMILY","CELEBRATE","KITE","WORLD MAP","HUMAN MIND","PUG","TIME","SISTINE CHAPEL","CAKE"]
+    var word: String?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.nameLabel.text = badText
+        self.setCurrentWord()
+        self.currentWord.text = word
     }
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         moved = false
-        
         if let touch = touches.first {
             lastPoint = touch.location(in: self.drawPage)
         }
     }
     
-
+    func setCurrentWord() {
+        let randomIndex = Int(arc4random_uniform(UInt32(wordArray.count)))
+        word = wordArray[randomIndex]
+    }
+    
+    
     func drawPicture(fromPoint:CGPoint, toPoint:CGPoint) {
         UIGraphicsBeginImageContextWithOptions(self.drawPage.bounds.size, false, 0.0)
         drawPage.image?.draw(in: CGRect(x: 0, y:0, width:self.drawPage.bounds.width, height:self.drawPage.bounds.height))
