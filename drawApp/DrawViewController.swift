@@ -52,8 +52,8 @@ class DrawViewController: UIViewController {
             self.to = to
         }
     }
-    var coordinatesArray = [DrawingCoordinate]()
     
+    var coordinatesArray = [DrawingCoordinate]()
     
     func drawPicture(fromPoint:CGPoint, toPoint:CGPoint) {
         UIGraphicsBeginImageContextWithOptions(self.drawPage.bounds.size, false, 0.0)
@@ -98,16 +98,16 @@ class DrawViewController: UIViewController {
     }
     
     
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    
+   
     @IBAction func clear(_ sender: UIButton) {
-//        print(coordinatesArray)
-        drawPage.image = nil
+        print(type(of: coordinatesArray));
+        drawPage.image = nil;
     }
+    
     
 }
