@@ -15,7 +15,8 @@ class DrawViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var clear: UIButton!
     @IBOutlet var currentWord: UILabel!
-
+    
+    
     var badText: String?
     var lastPoint = CGPoint.zero
     var moved = false
@@ -30,7 +31,7 @@ class DrawViewController: UIViewController {
         self.currentWord.text = word
     }
     
-    
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         moved = false
         if let touch = touches.first {
@@ -43,6 +44,16 @@ class DrawViewController: UIViewController {
         word = wordArray[randomIndex]
     }
     
+    struct DrawingCoordinate {
+        var from: CGPoint
+        var to: CGPoint
+        init(from: CGPoint, to: CGPoint) {
+            self.from = from
+            self.to = to
+        }
+    }
+    var coordinatesArray = [DrawingCoordinate]()
+    
     
     func drawPicture(fromPoint:CGPoint, toPoint:CGPoint) {
         UIGraphicsBeginImageContextWithOptions(self.drawPage.bounds.size, false, 0.0)
@@ -51,6 +62,8 @@ class DrawViewController: UIViewController {
         
         context?.move(to: CGPoint(x: fromPoint.x, y: fromPoint.y))
         context?.addLine(to: CGPoint(x: toPoint.x, y: toPoint.y))
+        
+        coordinatesArray.append(DrawingCoordinate(from: fromPoint, to: toPoint))
         
         context?.setBlendMode(CGBlendMode.color)
         context?.setLineCap(CGLineCap.round)
@@ -63,7 +76,7 @@ class DrawViewController: UIViewController {
         UIGraphicsEndImageContext()
         
     }
-
+    
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         moved = true
@@ -93,6 +106,7 @@ class DrawViewController: UIViewController {
     
     
     @IBAction func clear(_ sender: UIButton) {
+        print(coordinatesArray)
         drawPage.image = nil
     }
     
