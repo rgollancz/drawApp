@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2659" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--First-->
+        <!--Draw-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModule="drawApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,49 +19,53 @@
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gnz-9c-L4v">
-                                <rect key="frame" x="78" y="235" width="219" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="18"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="9pv-A4-QxB" id="SUL-PB-iOD"/>
-                                </connections>
-                            </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Loaded by FirstViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5M-7J-77L">
-                                <rect key="frame" x="110" y="428" width="195" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g7N-3Q-Bj3">
-                                <rect key="frame" x="131" y="291" width="113" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="17"/>
-                                <state key="normal" title="PLAY!">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_graph_paper" translatesAutoresizingMaskIntoConstraints="NO" id="iQM-4E-tzn">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g7N-3Q-Bj3">
+                                <rect key="frame" x="130" y="325" width="60" height="41"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <state key="normal" title="PLAY">
+                                    <color key="titleColor" red="0.13936412921767691" green="0.14074397208121825" blue="0.14074397208121825" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="playButton:" destination="9pv-A4-QxB" eventType="touchUpInside" id="EKD-Cf-ISM"/>
                                     <segue destination="NU5-Hi-tNp" kind="show" identifier="showDrawViewController" id="GSD-Vg-Y1A"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gnz-9c-L4v">
+                                <rect key="frame" x="93" y="260" width="133" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="9pv-A4-QxB" id="SUL-PB-iOD"/>
+                                </connections>
+                            </textField>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="iQM-4E-tzn" firstAttribute="width" secondItem="tsR-hK-woN" secondAttribute="width" id="JQq-7W-33g"/>
+                            <constraint firstItem="iQM-4E-tzn" firstAttribute="centerX" secondItem="gnz-9c-L4v" secondAttribute="centerX" id="XtV-Hv-8Fh"/>
+                            <constraint firstItem="gnz-9c-L4v" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="77" id="c37-dw-vx3"/>
+                            <constraint firstItem="iQM-4E-tzn" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" id="dPJ-23-fJD"/>
+                            <constraint firstItem="g7N-3Q-Bj3" firstAttribute="top" secondItem="gnz-9c-L4v" secondAttribute="bottom" constant="35" id="gGN-RG-4Xf"/>
+                            <constraint firstItem="gnz-9c-L4v" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="240" id="o2r-ZR-yXp"/>
+                            <constraint firstItem="iQM-4E-tzn" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="s4a-Qn-Jah"/>
+                            <constraint firstItem="iQM-4E-tzn" firstAttribute="centerX" secondItem="g7N-3Q-Bj3" secondAttribute="centerX" id="tVh-7Z-pYn"/>
+                            <constraint firstItem="iQM-4E-tzn" firstAttribute="height" secondItem="tsR-hK-woN" secondAttribute="height" id="wjP-SR-wfT"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Draw" image="first" selectedImage="first" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="nameText" destination="gnz-9c-L4v" id="59a-EB-MbX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="749.60000000000002" y="-320.68965517241384"/>
+            <point key="canvasLocation" x="806" y="-324"/>
         </scene>
         <!--Second View Controller-->
         <scene sceneID="NhA-5g-Car">
@@ -72,14 +76,18 @@
                         <viewControllerLayoutGuide type="bottom" id="rPA-KK-7Ed"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fXN-j9-jgj">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background_graph_paper" translatesAutoresizingMaskIntoConstraints="NO" id="o9a-76-IOy">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vAC-W5-FyP">
-                                <rect key="frame" x="-10" y="59" width="396" height="559"/>
+                                <rect key="frame" x="-10" y="59" width="341" height="460"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Draw" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CkQ-NG-xkm">
-                                <rect key="frame" x="-4" y="20" width="383" height="40"/>
+                                <rect key="frame" x="-4" y="20" width="328" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="FyF-V7-flo"/>
                                 </constraints>
@@ -98,7 +106,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nni-Hp-HCg">
-                                <rect key="frame" x="-4" y="556" width="383" height="62"/>
+                                <rect key="frame" x="-4" y="457" width="328" height="62"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="62" id="g1G-No-Wf1"/>
                                 </constraints>
@@ -133,9 +141,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Kh-xk-eou" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1585.5072463768117" y="-322.82608695652175"/>
+            <point key="canvasLocation" x="1584.057971014493" y="-323.64130434782612"/>
         </scene>
-        <!--Second-->
+        <!--Guess-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="drawApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -144,9 +152,13 @@
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background_graph_paper" translatesAutoresizingMaskIntoConstraints="NO" id="YKL-hh-rpb">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HEp-NZ-Dco">
                                 <rect key="frame" x="0.0" y="28" width="375" height="590"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -154,7 +166,7 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Guess" image="second" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="picturePage" destination="HEp-NZ-Dco" id="Zlk-To-2RW"/>
                     </connections>
@@ -184,6 +196,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="background_graph_paper" width="375" height="667"/>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
