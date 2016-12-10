@@ -40,7 +40,7 @@
                                 <rect key="frame" x="97" y="260" width="221" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
                                 <connections>
                                     <outlet property="delegate" destination="9pv-A4-QxB" id="SUL-PB-iOD"/>
                                 </connections>
@@ -232,7 +232,7 @@
                             <constraint firstItem="HEp-NZ-Dco" firstAttribute="leading" secondItem="YKL-hh-rpb" secondAttribute="leading" id="eoa-ev-fFF"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="question_tab_icon_30x30" selectedImage="question_tab_icon_30x30" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="" image="question_tab_icon" selectedImage="question_tab_icon" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="picturePage" destination="HEp-NZ-Dco" id="Zlk-To-2RW"/>
                     </connections>
@@ -267,6 +267,6 @@
         <image name="palette" width="70" height="82"/>
         <image name="pencil_tab_icon" width="30" height="30"/>
         <image name="play_button" width="100" height="50"/>
-        <image name="question_tab_icon_30x30" width="30" height="30"/>
+        <image name="question_tab_icon" width="30" height="30"/>
     </resources>
 </document>
