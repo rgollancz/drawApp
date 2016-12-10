@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pencil_background_white" translatesAutoresizingMaskIntoConstraints="NO" id="TaB-vq-ePz">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pencil_background_graph_paper" translatesAutoresizingMaskIntoConstraints="NO" id="TaB-vq-ePz">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -34,6 +34,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="pencil_background_white" width="375" height="667"/>
+        <image name="pencil_background_graph_paper" width="375" height="667"/>
     </resources>
 </document>
