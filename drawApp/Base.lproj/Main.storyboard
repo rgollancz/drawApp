@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Draw-->
+        <!--First View Controller-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModule="drawApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -58,7 +58,7 @@
                             <constraint firstItem="iQM-4E-tzn" firstAttribute="height" secondItem="tsR-hK-woN" secondAttribute="height" id="wjP-SR-wfT"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Draw" image="first" selectedImage="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="" image="pencil_tab_icon" selectedImage="pencil_tab_icon" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="nameText" destination="gnz-9c-L4v" id="59a-EB-MbX"/>
                     </connections>
@@ -201,7 +201,7 @@
             </objects>
             <point key="canvasLocation" x="2286.9565217391305" y="-326.08695652173918"/>
         </scene>
-        <!--Guess-->
+        <!--Second View Controller-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="drawApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -232,7 +232,7 @@
                             <constraint firstItem="HEp-NZ-Dco" firstAttribute="leading" secondItem="YKL-hh-rpb" secondAttribute="leading" id="eoa-ev-fFF"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Guess" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="" image="question_tab_icon_30x30" selectedImage="question_tab_icon_30x30" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="picturePage" destination="HEp-NZ-Dco" id="Zlk-To-2RW"/>
                     </connections>
@@ -264,9 +264,9 @@
     <resources>
         <image name="background_graph_paper" width="375" height="667"/>
         <image name="done_button" width="100" height="50"/>
-        <image name="first" width="30" height="30"/>
         <image name="palette" width="70" height="82"/>
+        <image name="pencil_tab_icon" width="30" height="30"/>
         <image name="play_button" width="100" height="50"/>
-        <image name="second" width="30" height="30"/>
+        <image name="question_tab_icon_30x30" width="30" height="30"/>
     </resources>
 </document>
