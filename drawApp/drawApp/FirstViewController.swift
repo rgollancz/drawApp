@@ -42,23 +42,13 @@ final class FirstViewController: UIViewController, UITextFieldDelegate, WebSocke
     }
 
     func websocketDidReceiveMessage(_ socket: WebSocket, text: String) {
-        
+        // drawingReceived method
     }
     
     func websocketDidReceiveData(_ socket: WebSocket, data: Data) {
         
     }
-    
-//    func sendMessage(_ message: String) {
-//        socket.write(string: message)
-//    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDrawViewController" {
             if let destination = segue.destination as? DrawViewController {
@@ -72,30 +62,36 @@ final class FirstViewController: UIViewController, UITextFieldDelegate, WebSocke
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
-        
-        
     }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         badText = textField.text
     }
     
-    
     //MARK: Actions
-    
     @IBAction func playButton(_ sender: Any) {
-        performSegue(withIdentifier: "showDrawViewController", sender: sender )
+        sendDrawing(badText!);
+        performSegue(withIdentifier: "showDrawViewController", sender: sender );
     }
+    
+    
+    // Get drawing from drawViewController - on 'complete' button action
+    
+    
+    // sendDrawing
+    func sendDrawing(_ message: String) {
+        socket.write(string: message)
+    }
+    
+    
+    // drawingReceived
+    
+
 }
 
-//
-//// MARK: - FilePrivate
-//fileprivate extension FirstViewController {
-//    
-//    func sendDrawing(_ message: String) {
-//        socket.write(string: message)
-//    }
-//    
-//    func drawingReceived(_ message: String) {
-//        return
-//    }
-//}
+
+
+
+
+
+
