@@ -103,6 +103,9 @@ class SecondViewController: UIViewController, UITextFieldDelegate{
         }
     
     
+    @IBAction func drawPageButton(_ sender: Any) {
+        performSegue(withIdentifier: "showFirstViewController", sender: sender )
+    }
 
     @IBAction func tryAgain(_ sender: Any) {
           responseIncorrect.isHidden = true
