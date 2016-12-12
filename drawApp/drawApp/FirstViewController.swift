@@ -27,14 +27,18 @@ final class FirstViewController: UIViewController, UITextFieldDelegate, WebSocke
         socket.connect()
         nameText.delegate = self
     }
+    
+    deinit {
+        socket.disconnect(forceTimeout: 0)
+        socket.delegate = nil
+    }
 
     func websocketDidConnect(_ socket: WebSocket) {
-        print("websocket is connected");
+    
     }
     
     func websocketDidDisconnect(_ socket: WebSocket, error: NSError?) {
-        socket.write(string: "disconnected");
-        print("websocket disconnected");
+        
     }
 
     func websocketDidReceiveMessage(_ socket: WebSocket, text: String) {
@@ -44,6 +48,10 @@ final class FirstViewController: UIViewController, UITextFieldDelegate, WebSocke
     func websocketDidReceiveData(_ socket: WebSocket, data: Data) {
         
     }
+    
+//    func sendMessage(_ message: String) {
+//        socket.write(string: message)
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -79,15 +87,15 @@ final class FirstViewController: UIViewController, UITextFieldDelegate, WebSocke
     }
 }
 
-
-// MARK: - FilePrivate
-fileprivate extension FirstViewController {
-    
-    func sendDrawing(_ message: String) {
-        socket.write(string: message)
-    }
-    
-    func drawingReceived(_ message: String) {
-        return
-    }
-}
+//
+//// MARK: - FilePrivate
+//fileprivate extension FirstViewController {
+//    
+//    func sendDrawing(_ message: String) {
+//        socket.write(string: message)
+//    }
+//    
+//    func drawingReceived(_ message: String) {
+//        return
+//    }
+//}
