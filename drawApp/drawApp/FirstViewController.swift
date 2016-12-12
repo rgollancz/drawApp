@@ -37,6 +37,9 @@ final class FirstViewController: UIViewController, UITextFieldDelegate, WebSocke
         print("websocket disconnected");
     }
 
+    func websocketDidReceiveMessage(_ socket: WebSocket, text: String) {
+        
+    }
     
     func websocketDidReceiveData(_ socket: WebSocket, data: Data) {
         
@@ -88,25 +91,3 @@ fileprivate extension FirstViewController {
         return
     }
 }
-
-
-
-
-//func websocketDidReceiveMessage(_ socket: WebSocket, text: String) {
-//    // 1
-//    guard let data = text.data(using: .utf16),
-//        let jsonData = try? JSONSerialization.jsonObject(with: data),
-//        let jsonDict = jsonData as? [String: Any],
-//        let messageType = jsonDict["type"] as? String else {
-//            return
-//    }
-//    
-//    // 2
-//    if messageType == "message",
-//        let messageData = jsonDict["data"] as? [String: Any],
-//        let messageAuthor = messageData["author"] as? String,
-//        let messageText = messageData["text"] as? String {
-//        
-//        //            drawingReceived(messageText)
-//    }
-//}
