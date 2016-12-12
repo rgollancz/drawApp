@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "1A87800BF594A19567FF83A117768A4999EF5DF2",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "9A215BE1B711C2BEFE6B1DA8C309A18054B49A5C" : 9223372036854775807,
+    "1A87800BF594A19567FF83A117768A4999EF5DF2" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "9CE71FB0-1E3B-461F-BD5B-E2F0765E4C07",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "9A215BE1B711C2BEFE6B1DA8C309A18054B49A5C" : "..",
+    "1A87800BF594A19567FF83A117768A4999EF5DF2" : "drawApp\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "drawApp",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "drawApp.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/rgollancz\/drawApp.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1A87800BF594A19567FF83A117768A4999EF5DF2"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Katy600\/Thermostat.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9A215BE1B711C2BEFE6B1DA8C309A18054B49A5C"
+    }
+  ]
+}
