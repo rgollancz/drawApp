@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DC9783F41DF96C7600EFC135 /* DrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9783F31DF96C7600EFC135 /* DrawViewController.swift */; };
+		DC9B68041DFC7B5500A94D98 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9B68031DFC7B5500A94D98 /* ColorPickerViewController.swift */; };
 		DCD84BCA1DF6D743009B298C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD84BC91DF6D743009B298C /* AppDelegate.swift */; };
 		DCD84BCC1DF6D743009B298C /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD84BCB1DF6D743009B298C /* FirstViewController.swift */; };
 		DCD84BCE1DF6D743009B298C /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD84BCD1DF6D743009B298C /* SecondViewController.swift */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		DC9783F31DF96C7600EFC135 /* DrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawViewController.swift; sourceTree = "<group>"; };
+		DC9B68031DFC7B5500A94D98 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		DCD84BC61DF6D743009B298C /* drawApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = drawApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCD84BC91DF6D743009B298C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCD84BCB1DF6D743009B298C /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				DCD84BCB1DF6D743009B298C /* FirstViewController.swift */,
 				DCD84BCD1DF6D743009B298C /* SecondViewController.swift */,
 				DC9783F31DF96C7600EFC135 /* DrawViewController.swift */,
+				DC9B68031DFC7B5500A94D98 /* ColorPickerViewController.swift */,
 				DCD84BCF1DF6D743009B298C /* Main.storyboard */,
 				DCD84BD21DF6D743009B298C /* Assets.xcassets */,
 				DCD84BD41DF6D743009B298C /* LaunchScreen.storyboard */,
@@ -269,6 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC9B68041DFC7B5500A94D98 /* ColorPickerViewController.swift in Sources */,
 				DCD84BCE1DF6D743009B298C /* SecondViewController.swift in Sources */,
 				DCD84BCA1DF6D743009B298C /* AppDelegate.swift in Sources */,
 				DC9783F41DF96C7600EFC135 /* DrawViewController.swift in Sources */,

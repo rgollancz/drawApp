@@ -16,10 +16,18 @@ class DrawViewController: UIViewController {
     @IBOutlet weak var clear: UIButton!
     @IBOutlet var currentWord: UILabel!
     
+    @IBAction func showColorPicker(_ sender: Any) {
+        let colorPickerViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "colorPickerId") as! ColorPickerViewController
+        self.addChildViewController(colorPickerViewController)
+        colorPickerViewController.view.frame = self.view.frame
+        self.view.addSubview(colorPickerViewController.view)
+        colorPickerViewController.didMove(toParentViewController: self)
+    }
     
     var badText: String?
     var lastPoint = CGPoint.zero
     var moved = false
+   
     let wordArray: [String] = ["CAT","TEAPOT","APPLE","BALLOON","NICKELBACK","GIRAFFE","HEADPHONES","MOUNTAIN","ROCK CLIMBING","FAMILY","CELEBRATE","KITE","WORLD MAP","HUMAN MIND","PUG","TIME","SISTINE CHAPEL","CAKE"]
     var word: String?
     
