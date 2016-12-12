@@ -8,9 +8,15 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class SecondViewController: UIViewController, UITextFieldDelegate{
     
+    var answer = "cat"
+    var guess: String?
+    
+    @IBOutlet var guessPicture: UITextField!
     @IBOutlet weak var picturePage: UIImageView!
+    @IBOutlet var responseCorrect: UIView!
+    @IBOutlet var responseIncorrect: UIView!
     
     struct DrawingCoordinate {
         var from: CGPoint
@@ -23,10 +29,14 @@ class SecondViewController: UIViewController {
     
 //    var coordinatesArray = [DrawingCoordinate]()
 
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.drawCoordinates()
+        guessPicture.delegate = self
+        responseCorrect.isHidden = true
+        responseIncorrect.isHidden = true
+        
     }
     
     
@@ -63,5 +73,45 @@ class SecondViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func checkAnswer() {
+        if guessPicture.text == answer{
+            responseCorrect.isHidden = false
+        }
+            
+        else {
+            
+            responseIncorrect.isHidden = false
+        }
+        
+    }
+    
+        //MARK: UITextFieldDelegate
+        
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        responseIncorrect.isHidden = true
+    }
+    
+        func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            textField.resignFirstResponder()
+            guess = guessPicture.text
+            checkAnswer()
+            guessPicture.text = ""
+            return true
+        }
+        func textFieldDidEndEditing(_ textField: UITextField) {
+            
+        }
+    
+    
+
+    @IBAction func tryAgain(_ sender: Any) {
+          responseIncorrect.isHidden = true
+    }
 }
+
+
+
+
+
+
 
