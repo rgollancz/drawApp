@@ -31,4 +31,37 @@ var wsServer = new webSocketServer({
 });
 
 wsServer.on('request', function(request) {
-  console.log((new Date()) + ' Connection from origin ' + request.origin + '.');});
+  console.log((new Date()) + ' Connection from origin ' + request.origin + '.');
+    var connection = request.accept(null, request.origin);
+    // we need to know client index to remove them on 'close' event
+    var index = players.push(connection) - 1;
+    var drawings = ""
+    console.log((new Date()) + ' Connection accepted.');
+
+    // user completed new drawing
+    connection.on('message', function(message) {
+      console.log(message);
+        if (message.type === 'utf8') { // accept only text
+            // if (userName === false) { // first message sent by user is their name
+                // remember user name
+                drawing = htmlEntities(message.utf8Data);
+                connection.sendUTF(JSON.stringify({ type:'drawing', data: drawing }));
+                console.log("1");
+
+            } else {
+              console.log(message.utf8Data);
+
+              // broadcast message to all connected clients
+              var json = JSON.stringify({ type:'message', data: obj });
+              for (var i=0; i < players.length; i++) {
+                  players[i].sendUTF(json);
+              }
+          }
+      });
+    // user disconnected
+    connection.on('close', function(connection) {
+        console.log((new Date()) + " Peer " + connection.remoteAddress + " disconnected.");
+        // remove user from the list of connected players
+        players.splice(index, 1);
+  });
+});

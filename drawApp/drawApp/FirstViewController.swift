@@ -6,10 +6,12 @@
 //  Copyright © 2016 RAKE. All rights reserved.
 //
 
+import Starscream
 import UIKit
 
-class FirstViewController: UIViewController, UITextFieldDelegate {
+final class FirstViewController: UIViewController, UITextFieldDelegate, WebSocketDelegate {
     
+    let socket = WebSocket(url: URL(string: "ws://localhost:3000/")!)
     
     //MARK: Properties
     
@@ -21,15 +23,32 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        socket.delegate = self
+        socket.connect()
         nameText.delegate = self
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    deinit {
+        socket.disconnect(forceTimeout: 0)
+        socket.delegate = nil
+    }
+
+    func websocketDidConnect(_ socket: WebSocket) {
+    
     }
     
+    func websocketDidDisconnect(_ socket: WebSocket, error: NSError?) {
+        
+    }
+
+    func websocketDidReceiveMessage(_ socket: WebSocket, text: String) {
+        // drawingReceived method
+    }
     
+    func websocketDidReceiveData(_ socket: WebSocket, data: Data) {
+        
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDrawViewController" {
             if let destination = segue.destination as? DrawViewController {
@@ -39,24 +58,40 @@ class FirstViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    
     //MARK: UITextFieldDelegate
-    
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
-        
-        
     }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         badText = textField.text
     }
     
-    
     //MARK: Actions
-    
     @IBAction func playButton(_ sender: Any) {
-        performSegue(withIdentifier: "showDrawViewController", sender: sender )
+        sendDrawing(badText!);
+        performSegue(withIdentifier: "showDrawViewController", sender: sender );
     }
+    
+    
+    // Get drawing from drawViewController - on 'complete' button action
+    
+    
+    // sendDrawing
+    func sendDrawing(_ message: String) {
+        socket.write(string: message)
+    }
+    
+    
+    // drawingReceived
+    
+
 }
+
+
+
+
+
+
+

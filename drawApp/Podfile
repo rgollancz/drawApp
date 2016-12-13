@@ -1,6 +1,5 @@
-# platform :ios, "8.0"
-# use_frameworks!
-
+platform :ios, '9.0'
+use_frameworks!
 
 target 'drawApp' do
  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
@@ -10,3 +9,8 @@ target 'drawApp' do
  pod 'Starscream', :git => 'https://github.com/daltoniam/Starscream', :branch => 'swift3'
 
 end
+
+
+
+
+
