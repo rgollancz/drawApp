@@ -6,9 +6,10 @@
 //  Copyright © 2016 RAKE. All rights reserved.
 //
 
-
+import Foundation
 import UIKit
 import Starscream
+
 
 class DrawViewController: UIViewController, WebSocketDelegate {
     
@@ -58,7 +59,9 @@ class DrawViewController: UIViewController, WebSocketDelegate {
         word = wordArray[randomIndex]
     }
     
-    struct DrawingCoordinate {
+   
+    
+    struct DrawingCoordinate: JSONSerializable {
         var from: CGPoint
         var to: CGPoint
         init(from: CGPoint, to: CGPoint) {
@@ -67,7 +70,14 @@ class DrawViewController: UIViewController, WebSocketDelegate {
         }
     }
     
+    let coordinatesArray = [(from: (173.0, 180.5), to: (173.0, 180.0)),  (from: (173.0, 180.0), to: (173.5, 177.0))]
+
+    if let json = coordinatesArray.toJSON() {
+        print(json)
+    }
+    
     var coordinatesArray = [DrawingCoordinate]()
+    
     
     func drawPicture(fromPoint:CGPoint, toPoint:CGPoint) {
         UIGraphicsBeginImageContextWithOptions(self.drawPage.bounds.size, false, 0.0)
@@ -146,6 +156,60 @@ class DrawViewController: UIViewController, WebSocketDelegate {
         
     }
 
-        
-
 }
+
+    protocol JSONRepresentable {
+        var JSONRepresentation: AnyObject {get}
+    }
+
+    protocol JSONSerializable: JSONRepresentable {
+    
+    }
+
+    extension JSONSerializable {
+        var JSONRepresentation: AnyObject {
+            var representation = [String: AnyObject]()
+        
+            for case let (label?, value) in Mirror(reflecting: self).children {
+                switch value {
+                    
+                case let value as JSONRepresentable:
+                    representation[label] = value.JSONRepresentation
+                    
+                    
+                case let value as Array<AnyObject>:
+                    representation[label] = value as AnyObject?
+                    
+                    
+//                case let value as Array<JSONSerializable>:
+//                    representation[label] = value.map({$0.JSONRepresentation})
+                
+                case let value as NSObject:
+                    representation[label] = value
+                
+                default:
+                // Ignore any unserializable properties
+                break
+            }
+        }
+        
+        return representation as AnyObject
+    }
+        
+        func toJSON() -> String? {
+            let representation = JSONRepresentation
+            
+            guard JSONSerialization.isValidJSONObject(representation) else {
+                return nil
+            }
+            
+            do {
+                let data = try JSONSerialization.data(withJSONObject: representation, options: [])
+                return String(data: data, encoding: String.Encoding.utf8)
+            } catch {
+                return nil
+            }
+        }
+    }
+
+
