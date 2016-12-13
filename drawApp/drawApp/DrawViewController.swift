@@ -116,5 +116,13 @@ class DrawViewController: UIViewController {
         drawPage.image = nil;
     }
     
+    @IBAction func backButton(_ sender: Any) {
+        performSegue(withIdentifier: "backButton", sender: sender )
+    }
     
+    @IBAction func submitButton(_ sender: Any) {
+        performSegue(withIdentifier: "showSubmitViewController", sender: sender )
+    }
+    
+
 }
