@@ -29,6 +29,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     var badText: String?
     var lastPoint = CGPoint.zero
     var moved = false
+    var jsonData : Data!
     
    
     let wordArray: [String] = ["CAT","TEAPOT","APPLE","BALLOON","NICKELBACK","GIRAFFE","HEADPHONES","MOUNTAIN","ROCK CLIMBING","FAMILY","CELEBRATE","KITE","WORLD MAP","HUMAN MIND","PUG","TIME","SISTINE CHAPEL","CAKE"]
@@ -66,7 +67,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
 //        }
 //    }
 //
-    var coordinatesArray = [[Int]]()
+    var coordinatesArray = [[Float]]()
     
     func drawPicture(fromPoint:CGPoint, toPoint:CGPoint) {
         UIGraphicsBeginImageContextWithOptions(self.drawPage.bounds.size, false, 0.0)
@@ -76,8 +77,8 @@ class DrawViewController: UIViewController, WebSocketDelegate {
         context?.move(to: CGPoint(x: fromPoint.x, y: fromPoint.y))
         context?.addLine(to: CGPoint(x: toPoint.x, y: toPoint.y))
         
-        coordinatesArray.append([Int(fromPoint.x), Int(fromPoint.y)])
-        coordinatesArray.append([Int(toPoint.x), Int(toPoint.y)])
+        coordinatesArray.append([Float(fromPoint.x), Float(fromPoint.y)])
+        coordinatesArray.append([Float(toPoint.x), Float(toPoint.y)])
         
         context?.setBlendMode(CGBlendMode.color)
         context?.setLineCap(CGLineCap.round)
@@ -128,7 +129,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     }
     
     @IBAction func submitButton(_ sender: Any) {
-        socket.write(string: "this is a test")
+        makingString()
     }
     
     func websocketDidConnect(_ socket: WebSocket) {
@@ -142,20 +143,41 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     @IBOutlet weak var test: UILabel!
     
     public func websocketDidReceiveMessage(_ socket: Starscream.WebSocket, text: String) {
+        print(string)
 
-        guard let data = text.data(using: .utf16),
-        let jsonData = try? JSONSerialization.jsonObject(with: data),
-        let jsonDict = jsonData as? [String: Any],
-        let name = jsonDict["name"] as? String else {
-            return
-        }
-        test.text = name
+//        guard let data = text.data(using: .utf16),
+//        let jsonData = try? JSONSerialization.jsonObject(with: data),
+//        let jsonDict = jsonData as? [String: Any],
+//        let name = jsonDict["name"] as? String else {
+//            return
+//        }
+//        test.text = name
     }
     
     public func websocketDidReceiveData(_ socket: Starscream.WebSocket, data: Data) {
-        
+        print("hello")
+        print(data)
     }
 
-        
+    
+    func makingString () {
+        do {
+            
+            //Convert to Data
+            jsonData = try JSONSerialization.data(withJSONObject: coordinatesArray, options: JSONSerialization.WritingOptions.prettyPrinted)
+            
+//            //Convert back to string. Usually only do this for debugging
+//            if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8) {
+//                print(JSONString)
+//            }
+//            
+//            //In production, you usually want to try and cast as the root data structure. Here we are casting as a dictionary. If the root object is an array cast as [AnyObject].
+//            json = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers) as! [AnyObject]
+//            
+        } catch {
+            return
+        }
+        socket.write(data: jsonData)
+    }
 
 }
