@@ -57,16 +57,16 @@ class DrawViewController: UIViewController, WebSocketDelegate {
         word = wordArray[randomIndex]
     }
     
-    struct DrawingCoordinate {
-        var from: CGPoint
-        var to: CGPoint
-        init(from: CGPoint, to: CGPoint) {
-            self.from = from
-            self.to = to
-        }
-    }
-    
-    var coordinatesArray = [DrawingCoordinate]()
+//    struct DrawingCoordinate {
+//        var from: CGPoint
+//        var to: CGPoint
+//        init(from: CGPoint, to: CGPoint) {
+//            self.from = from
+//            self.to = to
+//        }
+//    }
+//
+    var coordinatesArray = [[Int]]()
     
     func drawPicture(fromPoint:CGPoint, toPoint:CGPoint) {
         UIGraphicsBeginImageContextWithOptions(self.drawPage.bounds.size, false, 0.0)
@@ -76,7 +76,8 @@ class DrawViewController: UIViewController, WebSocketDelegate {
         context?.move(to: CGPoint(x: fromPoint.x, y: fromPoint.y))
         context?.addLine(to: CGPoint(x: toPoint.x, y: toPoint.y))
         
-        coordinatesArray.append(DrawingCoordinate(from: fromPoint, to: toPoint))
+        coordinatesArray.append([Int(fromPoint.x), Int(fromPoint.y)])
+        coordinatesArray.append([Int(toPoint.x), Int(toPoint.y)])
         
         context?.setBlendMode(CGBlendMode.color)
         context?.setLineCap(CGLineCap.round)
@@ -117,7 +118,8 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     
    
     @IBAction func clear(_ sender: UIButton) {
-        print(type(of: coordinatesArray));
+        print(coordinatesArray);
+        print(JSONSerialization.isValidJSONObject(coordinatesArray))
         drawPage.image = nil;
     }
     
@@ -140,10 +142,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     @IBOutlet weak var test: UILabel!
     
     public func websocketDidReceiveMessage(_ socket: Starscream.WebSocket, text: String) {
-//        let parsedData = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
-//        guard let drawing = parsedData[0] as? [String: AnyObject],
-//        var thing = drawing["name"] as [String: AnyObject] else {
-//            return;
+
         guard let data = text.data(using: .utf16),
         let jsonData = try? JSONSerialization.jsonObject(with: data),
         let jsonDict = jsonData as? [String: Any],
