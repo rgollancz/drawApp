@@ -53,7 +53,6 @@ final class FirstViewController: UIViewController, UITextFieldDelegate, WebSocke
         if segue.identifier == "showDrawViewController" {
             if let destination = segue.destination as? DrawViewController {
                 destination.badText = self.badText
-//                destination.socket = self.socket
                 
             }
         }
@@ -81,9 +80,7 @@ final class FirstViewController: UIViewController, UITextFieldDelegate, WebSocke
     
     // sendDrawing
     func sendDrawing(_ message: String) {
-        print("bbbb")
         socket.write(string: message)
-        print("aaa")
     }
     
     

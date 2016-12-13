@@ -8,8 +8,9 @@
 
 
 import UIKit
+import Starscream
 
-class DrawViewController: UIViewController {
+class DrawViewController: UIViewController, WebSocketDelegate {
     
     @IBOutlet weak var drawPage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -24,6 +25,7 @@ class DrawViewController: UIViewController {
         colorPickerViewController.didMove(toParentViewController: self)
     }
     
+    let socket = WebSocket(url: URL(string: "ws://localhost:3000/")!)
     var badText: String?
     var lastPoint = CGPoint.zero
     var moved = false
@@ -38,6 +40,9 @@ class DrawViewController: UIViewController {
         self.nameLabel.text = badText
         self.setCurrentWord()
         self.currentWord.text = word
+        socket.delegate = self
+        socket.connect()
+
     }
     
 
@@ -122,13 +127,25 @@ class DrawViewController: UIViewController {
     }
     
     @IBAction func submitButton(_ sender: Any) {
-        let viewcontroller:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        var fvc:FirstViewController = viewcontroller.instantiateViewController(withIdentifier: "fvc") as! FirstViewController
-        print("goodbye")
-        fvc.sendDrawing(badText!)
-        print("hello!")
-        print(fvc)
+        socket.write(string: word!)
     }
+    
+    func websocketDidConnect(_ socket: WebSocket) {
+        
+    }
+    
+    func websocketDidDisconnect(_ socket: WebSocket, error: NSError?) {
+        
+    }
+    
+    func websocketDidReceiveMessage(_ socket: WebSocket, text: String) {
+        // drawingReceived method
+    }
+    
+    func websocketDidReceiveData(_ socket: WebSocket, data: Data) {
+        
+    }
+
     
 
 }
