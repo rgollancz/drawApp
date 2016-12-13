@@ -143,7 +143,8 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     @IBOutlet weak var test: UILabel!
     
     public func websocketDidReceiveMessage(_ socket: Starscream.WebSocket, text: String) {
-        print(string)
+        print(1)
+        print(type(of: text))
 
 //        guard let data = text.data(using: .utf16),
 //        let jsonData = try? JSONSerialization.jsonObject(with: data),

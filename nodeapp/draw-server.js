@@ -47,12 +47,13 @@ wsServer.on('request', function(request) {
 
             } else {
               // broadcast message to all connected clients
-              data = (message);
-              var json = JSON.stringify({data: data});
+              data = new Uint8Array(message);
+              // console.log();
+              // var json = JSON.stringify({data: data});
 
               // var json = JSON.stringify({ data: data });
               for (var i=0; i < players.length; i++) {
-                  players[i].send(json);
+                  players[i].send(data);
               }
           }
       });
