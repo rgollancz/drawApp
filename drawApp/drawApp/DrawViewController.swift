@@ -127,7 +127,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     }
     
     @IBAction func submitButton(_ sender: Any) {
-        socket.write(string: word!)
+        socket.write(string: "hello")
     }
     
     func websocketDidConnect(_ socket: WebSocket) {
@@ -139,13 +139,13 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     }
     
     func websocketDidReceiveMessage(_ socket: WebSocket, text: String) {
-        // drawingReceived method
+      
     }
     
     func websocketDidReceiveData(_ socket: WebSocket, data: Data) {
         
     }
 
-    
+        
 
 }

@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import Starscream
 
-class SecondViewController: UIViewController, UITextFieldDelegate{
+class SecondViewController: UIViewController, UITextFieldDelegate, WebSocketDelegate {
     
     var answer = "cat"
     var guess: String?
     
+    let socket = WebSocket(url: URL(string: "ws://localhost:3000/")!)
+
     @IBOutlet var guessPicture: UITextField!
     @IBOutlet weak var picturePage: UIImageView!
     @IBOutlet var responseCorrect: UIView!
@@ -32,11 +35,13 @@ class SecondViewController: UIViewController, UITextFieldDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        socket.delegate = self
+        socket.connect()
         self.drawCoordinates()
         guessPicture.delegate = self
         responseCorrect.isHidden = true
         responseIncorrect.isHidden = true
-        
+    
     }
     
     
@@ -113,11 +118,44 @@ class SecondViewController: UIViewController, UITextFieldDelegate{
     @IBAction func giveUpButton(_ sender: Any) {
         performSegue(withIdentifier: "showTab", sender: sender )
     }
+
+    func websocketDidConnect(_ socket: WebSocket) {
+    
+    }
+
+    func websocketDidDisconnect(_ socket: WebSocket, error: NSError?) {
+    
+    }
+    
+    func drawingReceived() {
+        
+    }
+
+    func   websocketDidReceiveMessage(_ socket: WebSocket, text: String) {
+        print("working")
+        guard let data = text.data(using: .utf16),
+            let jsonData = try? JSONSerialization.jsonObject(with: data),
+            let jsonDict = jsonData as? [String: Any],
+            let messageType = jsonDict["type"] as? String else {
+                return
+        }
+        print(jsonDict)
+        print(jsonData)
+    
+//        if messageType == "drawing",
+//            let messageData = jsonDict["data"] as? [String: Any]
+//            let messageAuthor = messageData["author"] as? String,
+//            let messageText = messageData["text"] as? String 
+//            {
+//            drawingReceived()
+//        }
+        print(jsonDict)
+        print(jsonData)
+    }
+
+    func websocketDidReceiveData(_ socket: WebSocket, data: Data) {
+    
+    }
+    
 }
-
-
-
-
-
-
 
