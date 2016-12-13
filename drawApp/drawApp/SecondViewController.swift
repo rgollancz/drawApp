@@ -131,7 +131,7 @@ class SecondViewController: UIViewController, UITextFieldDelegate, WebSocketDele
         
     }
 
-    func   websocketDidReceiveMessage(_ socket: WebSocket, text: String) {
+    func websocketDidReceiveMessage(_ socket: WebSocket, text: String) {
         print("working")
         guard let data = text.data(using: .utf16),
             let jsonData = try? JSONSerialization.jsonObject(with: data),

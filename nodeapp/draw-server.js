@@ -43,7 +43,7 @@ wsServer.on('request', function(request) {
       // console.log(message);
         if (message.type === 'utf8') { // accept only text
                 name = htmlEntities(message.utf8Data);
-                connection.sendUTF(JSON.stringify({ type:'name', data: name }));
+                connection.sendUTF(JSON.stringify({ name: name }));
 
             } else {
               // broadcast message to all connected clients

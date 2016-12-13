@@ -42,7 +42,6 @@ class DrawViewController: UIViewController, WebSocketDelegate {
         self.currentWord.text = word
         socket.delegate = self
         socket.connect()
-
     }
     
 
@@ -127,7 +126,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     }
     
     @IBAction func submitButton(_ sender: Any) {
-        socket.write(string: "hello")
+        socket.write(string: "this is a test")
     }
     
     func websocketDidConnect(_ socket: WebSocket) {
@@ -138,11 +137,23 @@ class DrawViewController: UIViewController, WebSocketDelegate {
         
     }
     
-    func websocketDidReceiveMessage(_ socket: WebSocket, text: String) {
-      
+    @IBOutlet weak var test: UILabel!
+    
+    public func websocketDidReceiveMessage(_ socket: Starscream.WebSocket, text: String) {
+//        let parsedData = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
+//        guard let drawing = parsedData[0] as? [String: AnyObject],
+//        var thing = drawing["name"] as [String: AnyObject] else {
+//            return;
+        guard let data = text.data(using: .utf16),
+        let jsonData = try? JSONSerialization.jsonObject(with: data),
+        let jsonDict = jsonData as? [String: Any],
+        let name = jsonDict["name"] as? String else {
+            return
+        }
+        test.text = name
     }
     
-    func websocketDidReceiveData(_ socket: WebSocket, data: Data) {
+    public func websocketDidReceiveData(_ socket: Starscream.WebSocket, data: Data) {
         
     }
 
