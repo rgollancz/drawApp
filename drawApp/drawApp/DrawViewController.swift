@@ -27,6 +27,7 @@ class DrawViewController: UIViewController {
     var badText: String?
     var lastPoint = CGPoint.zero
     var moved = false
+    
    
     let wordArray: [String] = ["CAT","TEAPOT","APPLE","BALLOON","NICKELBACK","GIRAFFE","HEADPHONES","MOUNTAIN","ROCK CLIMBING","FAMILY","CELEBRATE","KITE","WORLD MAP","HUMAN MIND","PUG","TIME","SISTINE CHAPEL","CAKE"]
     var word: String?
@@ -121,7 +122,12 @@ class DrawViewController: UIViewController {
     }
     
     @IBAction func submitButton(_ sender: Any) {
-        performSegue(withIdentifier: "showSubmitViewController", sender: sender )
+        let viewcontroller:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        var fvc:FirstViewController = viewcontroller.instantiateViewController(withIdentifier: "fvc") as! FirstViewController
+        print("goodbye")
+        fvc.sendDrawing(badText!)
+        print("hello!")
+        print(fvc)
     }
     
 
