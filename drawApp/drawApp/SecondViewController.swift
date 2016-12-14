@@ -11,15 +11,29 @@ import Starscream
 
 class SecondViewController: UIViewController, UITextFieldDelegate, WebSocketDelegate {
     
-    var answer = "cat"
+    var answer: String?
     var guess: String?
+    var receivedDrawing: String?
+    var coordinatesArray = [DrawingCoordinate]()
     
-    let socket = WebSocket(url: URL(string: "ws://localhost:3000/")!)
+    let socket = WebSocket(url: URL(string: "http://185.53.227.70:3000")!)
 
     @IBOutlet var guessPicture: UITextField!
     @IBOutlet weak var picturePage: UIImageView!
     @IBOutlet var responseCorrect: UIView!
     @IBOutlet var responseIncorrect: UIView!
+    
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        socket.delegate = self
+        socket.connect()
+        guessPicture.delegate = self
+        responseCorrect.isHidden = true
+        responseIncorrect.isHidden = true
+        // receive name of drawing
+        // receive drawing coordinates
+    }
     
     struct DrawingCoordinate {
         var from: CGPoint
@@ -30,47 +44,36 @@ class SecondViewController: UIViewController, UITextFieldDelegate, WebSocketDele
         }
     }
     
-//    var coordinatesArray = [DrawingCoordinate]()
-
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        socket.delegate = self
-        socket.connect()
-        self.drawCoordinates()
-        guessPicture.delegate = self
-        responseCorrect.isHidden = true
-        responseIncorrect.isHidden = true
+//    func transformToCoordinates() {
+//         var array = receivedDrawing from string to array
+//         var arrayCoor = array to array of DrawingCoordinates
+//        
+//    }
     
-    }
-    
-    
-    var coordinatesArray:Array = [(from: (173.0, 180.5), to: (173.0, 180.0)),  (from: (173.0, 180.0), to: (173.5, 177.0)),  (from: (173.5, 177.0), to: (178.5, 169.5)),  (from: (178.5, 169.5), to: (182.5, 163.0)),  (from: (182.5, 163.0), to: (188.0, 156.0)),  (from: (188.0, 156.0), to: (192.0, 154.0)),  (from: (192.0, 154.0), to: (200.5, 153.0)),  (from: (200.5, 153.0), to: (212.0, 153.0)),  (from: (212.0, 153.0), to: (224.5, 153.5)),  (from: (224.5, 153.5), to: (232.5, 158.0)),  (from: (232.5, 158.0), to: (244.0, 167.5)),  (from: (244.0, 167.5), to: (254.0, 181.5)),  (from: (254.0, 181.5), to: (259.5, 195.0)),  (from: (259.5, 195.0), to: (263.5, 211.0)),  (from: (263.5, 211.0), to: (265.0, 226.0)),  (from: (265.0, 226.0), to: (265.0, 236.5)),  (from: (265.0, 236.5), to: (265.0, 256.5)),  (from: (265.0, 256.5), to: (263.0, 278.5)),  (from: (263.0, 278.5), to: (260.5, 291.0)),  (from: (260.5, 291.0), to: (256.5, 305.0)),  (from: (256.5, 305.0), to: (253.0, 312.5)),  (from: (253.0, 312.5), to: (248.5, 319.5)),  (from: (248.5, 319.5), to: (246.0, 322.0)),  (from: (246.0, 322.0), to: (243.0, 324.0)),  (from: (243.0, 324.0), to: (239.0, 327.0)),  (from: (239.0, 327.0), to: (234.5, 328.5)),  (from: (234.5, 328.5), to: (229.5, 329.5)),  (from: (229.5, 329.5), to: (225.5, 329.5)),  (from: (225.5, 329.5), to: (220.0, 327.5)),  (from: (220.0, 327.5), to: (215.0, 323.5)),  (from: (215.0, 323.5), to: (210.0, 321.0)),  (from: (210.0, 321.0), to: (206.0, 320.0)),  (from: (206.0, 320.0), to: (203.0, 319.5)),  (from: (203.0, 319.5), to: (201.0, 319.5)),  (from: (201.0, 319.5), to: (198.5, 320.0)),  (from: (198.5, 320.0), to: (197.0, 321.5)),  (from: (197.0, 321.5), to: (196.5, 322.5)),  (from: (196.5, 322.5), to: (195.5, 323.5)),  (from: (195.5, 323.5), to: (194.5, 325.0)),  (from: (194.5, 325.0), to: (193.5, 327.0)),  (from: (193.5, 327.0), to: (193.0, 328.0)),  (from: (193.0, 328.0), to: (192.5, 329.0)),  (from: (192.5, 329.0), to: (192.0, 330.0))]
-    
-    func drawCoordinates() {
-        
-        for (x, y) in coordinatesArray {
-        let from = x
-        let to = y
-        UIGraphicsBeginImageContextWithOptions(self.picturePage.bounds.size, false, 0.0)
-            picturePage.image?.draw(in: CGRect(x: 0, y:0, width:self.picturePage.bounds.width, height:self.picturePage.bounds.height))
-
-        let context = UIGraphicsGetCurrentContext()
-        context?.move(to: CGPoint(x: from.0 , y: from.1))
-        context?.addLine(to: CGPoint(x: to.0, y: to.1))
-     
-        context?.setBlendMode(CGBlendMode.color)
-        context?.setLineCap(CGLineCap.round)
-        context?.setLineWidth(5)
-        context?.setStrokeColor(UIColor(red: 0.26, green: 0.53, blue: 0.96, alpha: 1.0).cgColor)
-            
-        context?.strokePath()
-        
-        picturePage.image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        }
-    }
+//    func drawCoordinates() {
+//        
+//        for (x, y) in coordinatesArray {
+//        let from = x
+//        let to = y
+//        UIGraphicsBeginImageContextWithOptions(self.picturePage.bounds.size, false, 0.0)
+//            picturePage.image?.draw(in: CGRect(x: 0, y:0, width:self.picturePage.bounds.width, height:self.picturePage.bounds.height))
+//
+//        let context = UIGraphicsGetCurrentContext()
+//        context?.move(to: CGPoint(x: from.0 , y: from.1))
+//        context?.addLine(to: CGPoint(x: to.0, y: to.1))
+//     
+//        context?.setBlendMode(CGBlendMode.color)
+//        context?.setLineCap(CGLineCap.round)
+//        context?.setLineWidth(5)
+//        context?.setStrokeColor(UIColor(red: 0.26, green: 0.53, blue: 0.96, alpha: 1.0).cgColor)
+//            
+//        context?.strokePath()
+//        
+//        picturePage.image = UIGraphicsGetImageFromCurrentImageContext()
+//        UIGraphicsEndImageContext()
+//        
+//        }
+//    }
     
     
     override func didReceiveMemoryWarning() {
@@ -78,65 +81,81 @@ class SecondViewController: UIViewController, UITextFieldDelegate, WebSocketDele
         // Dispose of any resources that can be recreated.
     }
     
-    func checkAnswer() {
-        if guessPicture.text == answer{
-            responseCorrect.isHidden = false
-        }
-            
-        else {
-            
-            responseIncorrect.isHidden = false
-        }
-        
-    }
-    
-        //MARK: UITextFieldDelegate
-        
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        responseIncorrect.isHidden = true
-    }
-    
-        func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-            textField.resignFirstResponder()
-            guess = guessPicture.text
-            checkAnswer()
-            guessPicture.text = ""
-            return true
-        }
-        func textFieldDidEndEditing(_ textField: UITextField) {
-            
-        }
-    
-    
     @IBAction func drawPageButton(_ sender: Any) {
         performSegue(withIdentifier: "showTab", sender: sender )
     }
-
+    
     @IBAction func tryAgain(_ sender: Any) {
-          responseIncorrect.isHidden = true
+        responseIncorrect.isHidden = true
     }
     @IBAction func giveUpButton(_ sender: Any) {
         performSegue(withIdentifier: "showTab", sender: sender )
     }
-
+    
+    func checkAnswer() {
+        if guessPicture.text == answer{
+            responseCorrect.isHidden = false
+        }
+        else {
+            responseIncorrect.isHidden = false
+        }
+    }
+    
+    //MARK: UITextFieldDelegate
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        responseIncorrect.isHidden = true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        guess = guessPicture.text
+        checkAnswer()
+        guessPicture.text = ""
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+    }
+    
+    
     func websocketDidConnect(_ socket: WebSocket) {
-    
     }
-
+    
     func websocketDidDisconnect(_ socket: WebSocket, error: NSError?) {
+    }
+
     
+    func nameReceived(_ name: String) {
+        answer = name
     }
     
-    func drawingReceived() {
+    func drawingReceived(_ drawing: String) {
+        receivedDrawing = drawing;
+        print(receivedDrawing)
+//        transformToCoordinates();
+//        drawCoordinates();
+    }
+    
+    public func websocketDidReceiveMessage(_ socket: Starscream.WebSocket, text: String) {
         
+        guard let data = text.data(using: .utf16),
+            let jsonData = try? JSONSerialization.jsonObject(with: data),
+            let jsonDict = jsonData as? [String: Any],
+            let messageType = jsonDict["type"] as? String else {
+                return
+        }
+        
+        if messageType == "name" {
+            let name = jsonDict["data"] as? String;
+            nameReceived(name!)
+        } else {
+            let drawing = jsonDict["data"] as? String;
+            drawingReceived(drawing!)
+        }
     }
-
-    func websocketDidReceiveMessage(_ socket: WebSocket, text: String) {
-
-    }
-
-    func websocketDidReceiveData(_ socket: WebSocket, data: Data) {
     
+    
+    public func websocketDidReceiveData(_ socket: Starscream.WebSocket, data: Data) {
     }
     
 }

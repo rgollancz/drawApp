@@ -25,7 +25,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
         colorPickerViewController.didMove(toParentViewController: self)
     }
     
-    let socket = WebSocket(url: URL(string: "ws://localhost:3000/")!)
+    let socket = WebSocket(url: URL(string: "http://185.53.227.70:3000")!)
     var badText: String?
     var lastPoint = CGPoint.zero
     var moved = false
@@ -136,43 +136,15 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     }
     
     func websocketDidDisconnect(_ socket: WebSocket, error: NSError?) {
-        
     }
     
-    @IBOutlet weak var test: UILabel!
-    @IBOutlet weak var testTwo: UILabel!
-    
-    func nameReceived(_ name: String) {
-        test.text = name
-    }
-    
-    func drawingReceived(_ drawing: String) {
-        testTwo.text = drawing
-    }
-
     public func websocketDidReceiveMessage(_ socket: Starscream.WebSocket, text: String) {
-       
-        guard let data = text.data(using: .utf16),
-            let jsonData = try? JSONSerialization.jsonObject(with: data),
-            let jsonDict = jsonData as? [String: Any],
-            let messageType = jsonDict["type"] as? String else {
-                return
-        }
-
-        if messageType == "name" {
-            let name = jsonDict["data"] as? String;
-            nameReceived(name!)
-        } else {
-            let drawing = jsonDict["data"] as? String;
-            drawingReceived(drawing!)
-        }
     }
     
     
     public func websocketDidReceiveData(_ socket: Starscream.WebSocket, data: Data) {
     
     }
-
     
     func sendString() {
         let stringArray = coordinatesArray.flatMap { String(describing: $0) }
