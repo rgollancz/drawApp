@@ -61,7 +61,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     
    
     
-    struct DrawingCoordinate: JSONSerializable {
+    struct DrawingCoordinate: {
         var from: CGPoint
         var to: CGPoint
         init(from: CGPoint, to: CGPoint) {
@@ -70,13 +70,9 @@ class DrawViewController: UIViewController, WebSocketDelegate {
         }
     }
     
-    let coordinatesArray = [(from: (173.0, 180.5), to: (173.0, 180.0)),  (from: (173.0, 180.0), to: (173.5, 177.0))]
-
-    if let json = coordinatesArray.toJSON() {
-        print(json)
-    }
+   
     
-    var coordinatesArray = [DrawingCoordinate]()
+    var coordinatesArray = [[Float]]()
     
     
     func drawPicture(fromPoint:CGPoint, toPoint:CGPoint) {
@@ -153,7 +149,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     @IBOutlet weak var test: UILabel!
     
     public func websocketDidReceiveMessage(_ socket: Starscream.WebSocket, text: String) {
-        print(string)
+        print("hello")
 
 //        guard let data = text.data(using: .utf16),
 //        let jsonData = try? JSONSerialization.jsonObject(with: data),
@@ -190,4 +186,4 @@ class DrawViewController: UIViewController, WebSocketDelegate {
         socket.write(data: jsonData)
     }
 
-
+}
