@@ -51,7 +51,8 @@ class DrawViewController: UIViewController, WebSocketDelegate {
         socket.connect()
     }
     func updateTimer() {
-        counterLabel.text = String(counter+=1)
+        counter += 1
+        counterLabel.text = String(counter)
     }
     
 
