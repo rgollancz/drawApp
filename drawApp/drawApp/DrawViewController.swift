@@ -162,23 +162,13 @@ class DrawViewController: UIViewController, WebSocketDelegate {
                 return
         }
         print(messageType)
-        
-//        if messageType == "name",
-//            let name = jsonDict["name"] as? String {
-//            print(name)
-//        }
-//        
-//        if messageType == "drawing",
-//            let drawing = jsonDict["drawing"] as? String {
-//            print(drawing)
-//        }
-        
+
         if messageType == "name" {
-            print("it's a name!")
-        }
-        
-        if messageType == "drawing" {
-            print("it's a drawing")
+            let name = jsonDict["data"] as? String;
+            nameReceived(name!)
+        } else {
+            let drawing = jsonDict["data"] as? String;
+            drawingReceived(drawing!)
         }
     }
     
