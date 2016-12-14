@@ -169,60 +169,25 @@ class DrawViewController: UIViewController, WebSocketDelegate {
         print(data)
     }
 
-}
-
-    protocol JSONRepresentable {
-        var JSONRepresentation: AnyObject {get}
-    }
-
-    protocol JSONSerializable: JSONRepresentable {
     
-    }
-
-    extension JSONSerializable {
-        var JSONRepresentation: AnyObject {
-            var representation = [String: AnyObject]()
-        
-            for case let (label?, value) in Mirror(reflecting: self).children {
-                switch value {
-                    
-                case let value as JSONRepresentable:
-                    representation[label] = value.JSONRepresentation
-                    
-                    
-                case let value as Array<AnyObject>:
-                    representation[label] = value as AnyObject?
-                    
-                    
-//                case let value as Array<JSONSerializable>:
-//                    representation[label] = value.map({$0.JSONRepresentation})
-                
-                case let value as NSObject:
-                    representation[label] = value
-                
-                default:
-                // Ignore any unserializable properties
-                break
-            }
-        }
-        
-        return representation as AnyObject
-    }
-        
-        func toJSON() -> String? {
-            let representation = JSONRepresentation
+    func makingString () {
+        do {
             
-            guard JSONSerialization.isValidJSONObject(representation) else {
-                return nil
-            }
+            //Convert to Data
+            jsonData = try JSONSerialization.data(withJSONObject: coordinatesArray, options: JSONSerialization.WritingOptions.prettyPrinted)
             
-            do {
-                let data = try JSONSerialization.data(withJSONObject: representation, options: [])
-                return String(data: data, encoding: String.Encoding.utf8)
-            } catch {
-                return nil
-            }
+//            //Convert back to string. Usually only do this for debugging
+//            if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8) {
+//                print(JSONString)
+//            }
+//            
+//            //In production, you usually want to try and cast as the root data structure. Here we are casting as a dictionary. If the root object is an array cast as [AnyObject].
+//            json = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers) as! [AnyObject]
+//            
+        } catch {
+            return
         }
+        socket.write(data: jsonData)
     }
 
 
