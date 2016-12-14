@@ -30,6 +30,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     var badText: String?
     var lastPoint = CGPoint.zero
     var moved = false
+    var jsonData : Data!
     
    
     let wordArray: [String] = ["CAT","TEAPOT","APPLE","BALLOON","NICKELBACK","GIRAFFE","HEADPHONES","MOUNTAIN","ROCK CLIMBING","FAMILY","CELEBRATE","KITE","WORLD MAP","HUMAN MIND","PUG","TIME","SISTINE CHAPEL","CAKE"]
@@ -86,7 +87,8 @@ class DrawViewController: UIViewController, WebSocketDelegate {
         context?.move(to: CGPoint(x: fromPoint.x, y: fromPoint.y))
         context?.addLine(to: CGPoint(x: toPoint.x, y: toPoint.y))
         
-        coordinatesArray.append(DrawingCoordinate(from: fromPoint, to: toPoint))
+        coordinatesArray.append([Float(fromPoint.x), Float(fromPoint.y)])
+        coordinatesArray.append([Float(toPoint.x), Float(toPoint.y)])
         
         context?.setBlendMode(CGBlendMode.color)
         context?.setLineCap(CGLineCap.round)
@@ -127,7 +129,8 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     
    
     @IBAction func clear(_ sender: UIButton) {
-        print(type(of: coordinatesArray));
+        print(coordinatesArray);
+        print(JSONSerialization.isValidJSONObject(coordinatesArray))
         drawPage.image = nil;
     }
     
@@ -136,7 +139,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     }
     
     @IBAction func submitButton(_ sender: Any) {
-        socket.write(string: "this is a test")
+        makingString()
     }
     
     func websocketDidConnect(_ socket: WebSocket) {
@@ -150,21 +153,20 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     @IBOutlet weak var test: UILabel!
     
     public func websocketDidReceiveMessage(_ socket: Starscream.WebSocket, text: String) {
-//        let parsedData = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String:Any]
-//        guard let drawing = parsedData[0] as? [String: AnyObject],
-//        var thing = drawing["name"] as [String: AnyObject] else {
-//            return;
-        guard let data = text.data(using: .utf16),
-        let jsonData = try? JSONSerialization.jsonObject(with: data),
-        let jsonDict = jsonData as? [String: Any],
-        let name = jsonDict["name"] as? String else {
-            return
-        }
-        test.text = name
+        print(string)
+
+//        guard let data = text.data(using: .utf16),
+//        let jsonData = try? JSONSerialization.jsonObject(with: data),
+//        let jsonDict = jsonData as? [String: Any],
+//        let name = jsonDict["name"] as? String else {
+//            return
+//        }
+//        test.text = name
     }
     
     public func websocketDidReceiveData(_ socket: Starscream.WebSocket, data: Data) {
-        
+        print("hello")
+        print(data)
     }
 
 }
