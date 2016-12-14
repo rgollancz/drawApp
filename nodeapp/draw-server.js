@@ -44,11 +44,15 @@ wsServer.on('request', function(request) {
         if (message.type === 'utf8') { // accept only text
           if (name === false) {
                 name = htmlEntities(message.utf8Data);
-                connection.sendUTF(JSON.stringify({type:'name', data: name}));
+                for (var i=0; i < players.length; i++) {
+                  players[i].sendUTF(JSON.stringify({type:'name', data: name}));
+                }
             } else { //send coordinates
               drawing = htmlEntities(message.utf8Data);
-              connection.sendUTF(JSON.stringify({type:'drawing', data: drawing}));
-          }
+              for (var x=0; x < players.length; x++) {
+                players[x].sendUTF(JSON.stringify({type:'drawing', data: drawing}));
+              }
+            }
         }
       });
     // user disconnected

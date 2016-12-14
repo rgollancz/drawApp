@@ -11,7 +11,7 @@ import UIKit
 
 final class FirstViewController: UIViewController, UITextFieldDelegate, WebSocketDelegate {
     
-    let socket = WebSocket(url: URL(string: "http://185.53.227.70:3000")!)
+    let socket = WebSocket(url: URL(string: "IP ADDRESS")!)
     
     //MARK: Properties
     
@@ -42,7 +42,6 @@ final class FirstViewController: UIViewController, UITextFieldDelegate, WebSocke
     }
 
     func websocketDidReceiveMessage(_ socket: WebSocket, text: String) {
-        // drawingReceived method
     }
     
     func websocketDidReceiveData(_ socket: WebSocket, data: Data) {
@@ -70,22 +69,8 @@ final class FirstViewController: UIViewController, UITextFieldDelegate, WebSocke
     
     //MARK: Actions
     @IBAction func playButton(_ sender: Any) {
-        sendDrawing(badText!);
         performSegue(withIdentifier: "showDrawViewController", sender: sender );
     }
-    
-    
-    // Get drawing from drawViewController - on 'complete' button action
-    
-    
-    // sendDrawing
-    func sendDrawing(_ message: String) {
-        socket.write(string: message)
-    }
-    
-    
-    // drawingReceived
-    
 
 }
 

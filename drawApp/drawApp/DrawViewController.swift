@@ -25,7 +25,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
         colorPickerViewController.didMove(toParentViewController: self)
     }
     
-    let socket = WebSocket(url: URL(string: "http://185.53.227.70:3000")!)
+    let socket = WebSocket(url: URL(string: "IP ADDRESS")!)
     var badText: String?
     var lastPoint = CGPoint.zero
     var moved = false
@@ -58,16 +58,6 @@ class DrawViewController: UIViewController, WebSocketDelegate {
         word = wordArray[randomIndex]
     }
     
-//    struct DrawingCoordinate {
-//        var from: CGPoint
-//        var to: CGPoint
-//        init(from: CGPoint, to: CGPoint) {
-//            self.from = from
-//            self.to = to
-//        }
-    
-//    }
-//
     var coordinatesArray = [[Float]]()
     
     func drawPicture(fromPoint:CGPoint, toPoint:CGPoint) {
@@ -121,6 +111,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
    
     @IBAction func clear(_ sender: UIButton) {
         drawPage.image = nil;
+        coordinatesArray = []
     }
     
     @IBAction func backButton(_ sender: Any) {
