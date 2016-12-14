@@ -16,7 +16,7 @@ class SecondViewController: UIViewController, UITextFieldDelegate, WebSocketDele
     var receivedDrawing: String?
     var coordinatesArray = [DrawingCoordinate]()
     
-    let socket = WebSocket(url: URL(string: "http://192.168.48.96:3000")!)
+    let socket = WebSocket(url: URL(string: "IP ADD")!)
 
     @IBOutlet var guessPicture: UITextField!
     @IBOutlet weak var picturePage: UIImageView!
@@ -130,14 +130,9 @@ class SecondViewController: UIViewController, UITextFieldDelegate, WebSocketDele
     
     func drawingReceived(_ drawing: String) {
         receivedDrawing = drawing;
-//        print(receivedDrawing)
-        let drawArray = receivedDrawing!.characters.map { String($0) }
-        print(drawArray)
-        
-        
-//        print(receivedDrawing)
-//        transformToCoordinates();
-//        drawCoordinates();
+//        transformToArray()
+//        transformToCoordinates, e.g. coordinatesArray.append(DrawingCoordinate(from: fromPoint, to: toPoint))
+//        drawCoordinates()
     }
     
     public func websocketDidReceiveMessage(_ socket: Starscream.WebSocket, text: String) {

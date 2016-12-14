@@ -25,7 +25,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
         colorPickerViewController.didMove(toParentViewController: self)
     }
     
-    let socket = WebSocket(url: URL(string: "http://192.168.48.96:3000")!)
+    let socket = WebSocket(url: URL(string: "IP ADD")!)
     var badText: String?
     var lastPoint = CGPoint.zero
     var moved = false
