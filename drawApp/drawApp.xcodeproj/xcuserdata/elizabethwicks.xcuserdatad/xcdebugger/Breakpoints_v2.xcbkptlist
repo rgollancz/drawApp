@@ -165,13 +165,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "drawApp/DrawViewController.swift"
-            timestampString = "503342991.236306"
+            timestampString = "503406269.24543"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
-            landmarkName = "drawPicture(fromPoint:toPoint:)"
-            landmarkType = "7">
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "DrawViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -197,13 +197,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "drawApp/DrawViewController.swift"
-            timestampString = "503342991.236306"
+            timestampString = "503406269.24543"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
-            landmarkName = "touchesMoved(_:with:)"
-            landmarkType = "7">
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "DrawViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -213,11 +213,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "drawApp/SecondViewController.swift"
-            timestampString = "502978895.044422"
+            timestampString = "503404670.698058"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -229,11 +229,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "drawApp/SecondViewController.swift"
-            timestampString = "502978997.793074"
+            timestampString = "503404670.698058"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
             landmarkName = "SecondViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -245,11 +245,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "drawApp/SecondViewController.swift"
-            timestampString = "502979545.134958"
+            timestampString = "503404670.698058"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
             landmarkName = "init(from:to:)"
             landmarkType = "7">
          </BreakpointContent>

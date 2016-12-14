@@ -31,7 +31,10 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     var lastPoint = CGPoint.zero
     var moved = false
     var jsonData : Data!
+    var timer = Timer()
+    var counter = 0
     
+    @IBOutlet var counterLabel: UILabel!
    
     let wordArray: [String] = ["CAT","TEAPOT","APPLE","BALLOON","NICKELBACK","GIRAFFE","HEADPHONES","MOUNTAIN","ROCK CLIMBING","FAMILY","CELEBRATE","KITE","WORLD MAP","HUMAN MIND","PUG","TIME","SISTINE CHAPEL","CAKE"]
     var word: String?
@@ -39,11 +42,16 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        counterLabel.text = String(counter)
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
         self.nameLabel.text = badText
         self.setCurrentWord()
         self.currentWord.text = word
         socket.delegate = self
         socket.connect()
+    }
+    func updateTimer() {
+        counterLabel.text = String(counter+=1)
     }
     
 
@@ -61,7 +69,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     
    
     
-    struct DrawingCoordinate: {
+    struct DrawingCoordinate {
         var from: CGPoint
         var to: CGPoint
         init(from: CGPoint, to: CGPoint) {
