@@ -115,7 +115,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EWr-cR-1b4">
-                                <rect key="frame" x="334" y="51" width="70" height="82"/>
+                                <rect key="frame" x="329" y="51" width="75" height="82"/>
                                 <state key="normal" image="palette"/>
                                 <connections>
                                     <action selector="showColorPicker:" destination="NU5-Hi-tNp" eventType="touchUpInside" id="TKp-Bc-x0a"/>
@@ -132,16 +132,17 @@
                                     <segue destination="49e-Tb-3d3" kind="show" identifier="backButton" id="L3e-wh-rGV"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9sZ-e8-Z58">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9sZ-e8-Z58">
                                 <rect key="frame" x="63" y="200" width="317" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Timer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Pr-LP-NfC">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Timer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Pr-LP-NfC">
                                 <rect key="frame" x="144" y="81" width="129" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="129" id="bdx-66-wi0"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="21"/>
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -160,10 +161,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="2Pr-LP-NfC" firstAttribute="leading" secondItem="fXN-j9-jgj" secondAttribute="leadingMargin" constant="124" id="1U2-9z-rdk"/>
                             <constraint firstItem="EWr-cR-1b4" firstAttribute="top" secondItem="CkQ-NG-xkm" secondAttribute="bottom" constant="-9" id="A7c-aR-rLH"/>
                             <constraint firstItem="rHM-28-mHV" firstAttribute="leading" secondItem="fXN-j9-jgj" secondAttribute="leadingMargin" id="FB8-Nx-SMc"/>
+                            <constraint firstItem="9sZ-e8-Z58" firstAttribute="top" secondItem="2Pr-LP-NfC" secondAttribute="bottom" constant="97" id="H7U-ph-V9D"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vAC-W5-FyP" secondAttribute="trailing" constant="-20" id="Hj4-Lr-GrK"/>
                             <constraint firstItem="CkQ-NG-xkm" firstAttribute="top" secondItem="g3Y-2t-fxm" secondAttribute="bottom" id="IDi-7r-3MK"/>
+                            <constraint firstItem="EWr-cR-1b4" firstAttribute="leading" secondItem="2Pr-LP-NfC" secondAttribute="trailing" constant="56" id="KXQ-Rb-xRg"/>
                             <constraint firstItem="nni-Hp-HCg" firstAttribute="bottom" secondItem="rPA-KK-7Ed" secondAttribute="top" constant="-10" id="RCi-cW-bvR"/>
                             <constraint firstItem="nni-Hp-HCg" firstAttribute="centerX" secondItem="vAC-W5-FyP" secondAttribute="centerX" constant="1" id="UJN-h5-lby"/>
                             <constraint firstItem="vAC-W5-FyP" firstAttribute="leading" secondItem="fXN-j9-jgj" secondAttribute="leadingMargin" constant="-20" id="Vd4-hL-3Jr"/>
@@ -176,6 +180,7 @@
                             <constraint firstItem="nni-Hp-HCg" firstAttribute="leading" secondItem="CkQ-NG-xkm" secondAttribute="leading" id="k8P-Sz-CpZ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="nni-Hp-HCg" secondAttribute="trailing" constant="-20" id="lGX-Kd-GGN"/>
                             <constraint firstItem="EWr-cR-1b4" firstAttribute="top" secondItem="CkQ-NG-xkm" secondAttribute="bottom" constant="-9" id="oAL-I6-aiC"/>
+                            <constraint firstItem="2Pr-LP-NfC" firstAttribute="top" secondItem="CkQ-NG-xkm" secondAttribute="bottom" constant="21" id="ytF-EM-LXE"/>
                         </constraints>
                     </view>
                     <connections>

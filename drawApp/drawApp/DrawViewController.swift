@@ -12,6 +12,7 @@ import Starscream
 
 
 class DrawViewController: UIViewController, WebSocketDelegate {
+    //MARK: Properties
     
     @IBOutlet weak var drawPage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -34,7 +35,10 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     var timer = Timer()
     var counter = 5
     var drawingAllowed = true
-    
+    var timerFlash = Timer()
+    var counterFlash = 3
+
+   
     @IBOutlet var counterLabel: UILabel!
    
     @IBOutlet var clearButtonLabel: UIButton!
@@ -54,18 +58,18 @@ class DrawViewController: UIViewController, WebSocketDelegate {
         socket.delegate = self
         socket.connect()
         submitButtonLabel.isHidden = true
+
+        
     }
+    
+   //MARK: Actions
     
     func updateTimer() {
         if counter == 0 {
-            drawingAllowed = false
             timer.invalidate()
-            submitButtonLabel.isHidden = false
             counterLabel.text = String("Time's up!")
-            clearButtonLabel.isHidden = true
-            currentWord.isHidden = true
-            
-            
+            changeViewOfButtons()
+            flashTimer()
    
         } else{
             counter -= 1
@@ -73,22 +77,32 @@ class DrawViewController: UIViewController, WebSocketDelegate {
         }
     }
     
-
+    func changeViewOfButtons() {
+        clearButtonLabel.isHidden = true
+        currentWord.isHidden = true
+        submitButtonLabel.isHidden = false
+        drawingAllowed = false
+    }
+    
+    func flashTimer () {
+        timerFlash = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(flashTimerAction), userInfo: nil, repeats: true)
+    }
+    
+    func flashTimerAction() {
+        counterLabel.isHidden = (counterLabel.isHidden == true) ? false : true
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-       
         moved = false
         if let touch = touches.first {
             lastPoint = touch.location(in: self.drawPage)
         }
-    
     }
     
     func setCurrentWord() {
         let randomIndex = Int(arc4random_uniform(UInt32(wordArray.count)))
         word = wordArray[randomIndex]
     }
-    
-   
     
     struct DrawingCoordinate {
         var from: CGPoint
@@ -133,17 +147,12 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-   
         moved = true
-        
         if let touch = touches.first {
             let currentPoint = touch.location(in: self.drawPage)
             drawPicture(fromPoint: lastPoint, toPoint: currentPoint)
-            
             lastPoint = currentPoint
-            
         }
-    
     }
     
     
@@ -222,3 +231,4 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     }
 
 }
+
