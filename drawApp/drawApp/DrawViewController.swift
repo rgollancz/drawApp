@@ -119,8 +119,6 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     
    
     @IBAction func clear(_ sender: UIButton) {
-        print(coordinatesArray);
-        print(JSONSerialization.isValidJSONObject(coordinatesArray))
         drawPage.image = nil;
     }
     
@@ -129,7 +127,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     }
     
     @IBAction func submitButton(_ sender: Any) {
-        makingString()
+        sendString()
     }
     
     func websocketDidConnect(_ socket: WebSocket) {
@@ -143,42 +141,28 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     @IBOutlet weak var test: UILabel!
     
     public func websocketDidReceiveMessage(_ socket: Starscream.WebSocket, text: String) {
-        print(1)
-        print(type(of: text))
+        print("websocketDidReceiveMessage")
 
-//        guard let data = text.data(using: .utf16),
-//        let jsonData = try? JSONSerialization.jsonObject(with: data),
-//        let jsonDict = jsonData as? [String: Any],
-//        let name = jsonDict["name"] as? String else {
-//            return
-//        }
-//        test.text = name
+        guard let data = text.data(using: .utf16),
+        let jsonData = try? JSONSerialization.jsonObject(with: data),
+        let jsonDict = jsonData as? [String: Any],
+        let name = jsonDict["name"] as? String else {
+            return
+        }
+        test.text = name
     }
     
     public func websocketDidReceiveData(_ socket: Starscream.WebSocket, data: Data) {
-        print("hello")
+        print("websocketDidReceiveData")
         print(data)
     }
 
     
-    func makingString () {
-        do {
-            
-            //Convert to Data
-            jsonData = try JSONSerialization.data(withJSONObject: coordinatesArray, options: JSONSerialization.WritingOptions.prettyPrinted)
-            
-//            //Convert back to string. Usually only do this for debugging
-//            if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8) {
-//                print(JSONString)
-//            }
-//            
-//            //In production, you usually want to try and cast as the root data structure. Here we are casting as a dictionary. If the root object is an array cast as [AnyObject].
-//            json = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers) as! [AnyObject]
-//            
-        } catch {
-            return
-        }
-        socket.write(data: jsonData)
+    func sendString() {
+        let stringArray = coordinatesArray.flatMap { String(describing: $0) }
+        let string = stringArray.joined(separator: "-")
+        print(string)
+        socket.write(string: string)
+        
     }
-
 }
