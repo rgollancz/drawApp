@@ -132,21 +132,6 @@
                                     <segue destination="49e-Tb-3d3" kind="show" identifier="backButton" id="L3e-wh-rGV"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9sZ-e8-Z58">
-                                <rect key="frame" x="63" y="200" width="317" height="50"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Timer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Pr-LP-NfC">
-                                <rect key="frame" x="144" y="81" width="129" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="129" id="bdx-66-wi0"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="21"/>
-                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3v2-Qg-hM5">
                                 <rect key="frame" x="155" y="603" width="105" height="69"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -158,15 +143,33 @@
                                     <action selector="submitButton:" destination="NU5-Hi-tNp" eventType="touchUpInside" id="zYd-DD-uBT"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9sZ-e8-Z58">
+                                <rect key="frame" x="63" y="200" width="317" height="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Timer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Pr-LP-NfC">
+                                <rect key="frame" x="126" y="81" width="162" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="129" id="bdx-66-wi0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="21"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="2Pr-LP-NfC" firstAttribute="leading" secondItem="fXN-j9-jgj" secondAttribute="leadingMargin" constant="124" id="1U2-9z-rdk"/>
+                            <constraint firstItem="2Pr-LP-NfC" firstAttribute="leading" secondItem="fXN-j9-jgj" secondAttribute="leadingMargin" constant="124" id="47F-Pg-rAB"/>
+                            <constraint firstItem="2Pr-LP-NfC" firstAttribute="leading" secondItem="fXN-j9-jgj" secondAttribute="leadingMargin" constant="106" id="6lV-ck-9Tq"/>
                             <constraint firstItem="EWr-cR-1b4" firstAttribute="top" secondItem="CkQ-NG-xkm" secondAttribute="bottom" constant="-9" id="A7c-aR-rLH"/>
                             <constraint firstItem="rHM-28-mHV" firstAttribute="leading" secondItem="fXN-j9-jgj" secondAttribute="leadingMargin" id="FB8-Nx-SMc"/>
                             <constraint firstItem="9sZ-e8-Z58" firstAttribute="top" secondItem="2Pr-LP-NfC" secondAttribute="bottom" constant="97" id="H7U-ph-V9D"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vAC-W5-FyP" secondAttribute="trailing" constant="-20" id="Hj4-Lr-GrK"/>
                             <constraint firstItem="CkQ-NG-xkm" firstAttribute="top" secondItem="g3Y-2t-fxm" secondAttribute="bottom" id="IDi-7r-3MK"/>
+                            <constraint firstItem="2Pr-LP-NfC" firstAttribute="top" secondItem="CkQ-NG-xkm" secondAttribute="bottom" constant="21" id="IVB-Uc-cw4"/>
                             <constraint firstItem="EWr-cR-1b4" firstAttribute="leading" secondItem="2Pr-LP-NfC" secondAttribute="trailing" constant="56" id="KXQ-Rb-xRg"/>
                             <constraint firstItem="nni-Hp-HCg" firstAttribute="bottom" secondItem="rPA-KK-7Ed" secondAttribute="top" constant="-10" id="RCi-cW-bvR"/>
                             <constraint firstItem="nni-Hp-HCg" firstAttribute="centerX" secondItem="vAC-W5-FyP" secondAttribute="centerX" constant="1" id="UJN-h5-lby"/>
@@ -180,6 +183,9 @@
                             <constraint firstItem="nni-Hp-HCg" firstAttribute="leading" secondItem="CkQ-NG-xkm" secondAttribute="leading" id="k8P-Sz-CpZ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="nni-Hp-HCg" secondAttribute="trailing" constant="-20" id="lGX-Kd-GGN"/>
                             <constraint firstItem="EWr-cR-1b4" firstAttribute="top" secondItem="CkQ-NG-xkm" secondAttribute="bottom" constant="-9" id="oAL-I6-aiC"/>
+                            <constraint firstItem="2Pr-LP-NfC" firstAttribute="top" secondItem="CkQ-NG-xkm" secondAttribute="bottom" constant="21" id="rur-nZ-gKY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2Pr-LP-NfC" secondAttribute="trailing" constant="106" id="ryV-O0-f4r"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2Pr-LP-NfC" secondAttribute="trailing" constant="121" id="vkc-FI-tRy"/>
                             <constraint firstItem="2Pr-LP-NfC" firstAttribute="top" secondItem="CkQ-NG-xkm" secondAttribute="bottom" constant="21" id="ytF-EM-LXE"/>
                         </constraints>
                     </view>
