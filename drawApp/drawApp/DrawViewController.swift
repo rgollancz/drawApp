@@ -58,8 +58,6 @@ class DrawViewController: UIViewController, WebSocketDelegate {
         socket.delegate = self
         socket.connect()
         submitButtonLabel.isHidden = true
-
-        
     }
     
    //MARK: Actions
@@ -85,7 +83,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     }
     
     func flashTimer () {
-        timerFlash = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(flashTimerAction), userInfo: nil, repeats: true)
+        timerFlash = Timer.scheduledTimer(timeInterval: 0.4, target: self, selector: #selector(flashTimerAction), userInfo: nil, repeats: true)
     }
     
     func flashTimerAction() {
@@ -139,10 +137,9 @@ class DrawViewController: UIViewController, WebSocketDelegate {
         
         drawPage.image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-         }else {
+         } else {
             return
         }
-        
     }
     
     
@@ -195,13 +192,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     public func websocketDidReceiveMessage(_ socket: Starscream.WebSocket, text: String) {
         print("hello")
 
-//        guard let data = text.data(using: .utf16),
-//        let jsonData = try? JSONSerialization.jsonObject(with: data),
-//        let jsonDict = jsonData as? [String: Any],
-//        let name = jsonDict["name"] as? String else {
-//            return
-//        }
-//        test.text = name
+
     }
     
     public func websocketDidReceiveData(_ socket: Starscream.WebSocket, data: Data) {
@@ -216,14 +207,6 @@ class DrawViewController: UIViewController, WebSocketDelegate {
             //Convert to Data
             jsonData = try JSONSerialization.data(withJSONObject: coordinatesArray, options: JSONSerialization.WritingOptions.prettyPrinted)
             
-//            //Convert back to string. Usually only do this for debugging
-//            if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8) {
-//                print(JSONString)
-//            }
-//            
-//            //In production, you usually want to try and cast as the root data structure. Here we are casting as a dictionary. If the root object is an array cast as [AnyObject].
-//            json = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers) as! [AnyObject]
-//            
         } catch {
             return
         }

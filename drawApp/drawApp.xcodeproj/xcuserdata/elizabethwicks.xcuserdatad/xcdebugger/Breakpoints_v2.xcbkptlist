@@ -165,11 +165,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "drawApp/DrawViewController.swift"
-            timestampString = "503411174.385082"
+            timestampString = "503412337.933067"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
             landmarkName = "DrawViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -197,11 +197,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "drawApp/DrawViewController.swift"
-            timestampString = "503411174.385082"
+            timestampString = "503412337.933067"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
             landmarkName = "DrawViewController"
             landmarkType = "3">
          </BreakpointContent>
