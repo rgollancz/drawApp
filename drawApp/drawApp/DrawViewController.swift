@@ -143,25 +143,21 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     @IBOutlet weak var testTwo: UILabel!
     
     func nameReceived(_ name: String) {
-        print("nameReceived")
         test.text = name
     }
     
     func drawingReceived(_ drawing: String) {
-        print("drawingReceived")
         testTwo.text = drawing
     }
 
     public func websocketDidReceiveMessage(_ socket: Starscream.WebSocket, text: String) {
-        print("websocketDidReceiveMessage")
-
+       
         guard let data = text.data(using: .utf16),
             let jsonData = try? JSONSerialization.jsonObject(with: data),
             let jsonDict = jsonData as? [String: Any],
             let messageType = jsonDict["type"] as? String else {
                 return
         }
-        print(messageType)
 
         if messageType == "name" {
             let name = jsonDict["data"] as? String;
