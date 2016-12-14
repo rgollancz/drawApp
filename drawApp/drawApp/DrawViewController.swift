@@ -65,6 +65,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
 //            self.from = from
 //            self.to = to
 //        }
+    
 //    }
 //
     var coordinatesArray = [[Float]]()
@@ -131,7 +132,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     }
     
     func websocketDidConnect(_ socket: WebSocket) {
-        
+        socket.write(string: currentWord.text!)
     }
     
     func websocketDidDisconnect(_ socket: WebSocket, error: NSError?) {
@@ -139,29 +140,57 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     }
     
     @IBOutlet weak var test: UILabel!
+    @IBOutlet weak var testTwo: UILabel!
     
+    func nameReceived(_ name: String) {
+        print("nameReceived")
+        test.text = name
+    }
+    
+    func drawingReceived(_ drawing: String) {
+        print("drawingReceived")
+        testTwo.text = drawing
+    }
+
     public func websocketDidReceiveMessage(_ socket: Starscream.WebSocket, text: String) {
         print("websocketDidReceiveMessage")
 
         guard let data = text.data(using: .utf16),
-        let jsonData = try? JSONSerialization.jsonObject(with: data),
-        let jsonDict = jsonData as? [String: Any],
-        let name = jsonDict["name"] as? String else {
-            return
+            let jsonData = try? JSONSerialization.jsonObject(with: data),
+            let jsonDict = jsonData as? [String: Any],
+            let messageType = jsonDict["type"] as? String else {
+                return
         }
-        test.text = name
+        print(messageType)
+        
+//        if messageType == "name",
+//            let name = jsonDict["name"] as? String {
+//            print(name)
+//        }
+//        
+//        if messageType == "drawing",
+//            let drawing = jsonDict["drawing"] as? String {
+//            print(drawing)
+//        }
+        
+        if messageType == "name" {
+            print("it's a name!")
+        }
+        
+        if messageType == "drawing" {
+            print("it's a drawing")
+        }
     }
     
+    
     public func websocketDidReceiveData(_ socket: Starscream.WebSocket, data: Data) {
-        print("websocketDidReceiveData")
-        print(data)
+    
     }
 
     
     func sendString() {
         let stringArray = coordinatesArray.flatMap { String(describing: $0) }
         let string = stringArray.joined(separator: "-")
-        print(string)
         socket.write(string: string)
         
     }
