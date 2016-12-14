@@ -32,10 +32,14 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     var moved = false
     var jsonData : Data!
     var timer = Timer()
-    var counter = 0
+    var counter = 5
+    var drawingAllowed = true
     
     @IBOutlet var counterLabel: UILabel!
    
+    @IBOutlet var clearButtonLabel: UIButton!
+    @IBOutlet var submitButtonLabel: UIButton!
+    
     let wordArray: [String] = ["CAT","TEAPOT","APPLE","BALLOON","NICKELBACK","GIRAFFE","HEADPHONES","MOUNTAIN","ROCK CLIMBING","FAMILY","CELEBRATE","KITE","WORLD MAP","HUMAN MIND","PUG","TIME","SISTINE CHAPEL","CAKE"]
     var word: String?
     
@@ -49,18 +53,34 @@ class DrawViewController: UIViewController, WebSocketDelegate {
         self.currentWord.text = word
         socket.delegate = self
         socket.connect()
+        submitButtonLabel.isHidden = true
     }
+    
     func updateTimer() {
-        counter += 1
-        counterLabel.text = String(counter)
+        if counter == 0 {
+            drawingAllowed = false
+            timer.invalidate()
+            submitButtonLabel.isHidden = false
+            counterLabel.text = String("Time's up!")
+            clearButtonLabel.isHidden = true
+            currentWord.isHidden = true
+            
+            
+   
+        } else{
+            counter -= 1
+            counterLabel.text = String(counter)
+        }
     }
     
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+       
         moved = false
         if let touch = touches.first {
             lastPoint = touch.location(in: self.drawPage)
         }
+    
     }
     
     func setCurrentWord() {
@@ -85,6 +105,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     
     
     func drawPicture(fromPoint:CGPoint, toPoint:CGPoint) {
+         if drawingAllowed == true {
         UIGraphicsBeginImageContextWithOptions(self.drawPage.bounds.size, false, 0.0)
         drawPage.image?.draw(in: CGRect(x: 0, y:0, width:self.drawPage.bounds.width, height:self.drawPage.bounds.height))
         let context = UIGraphicsGetCurrentContext()
@@ -104,11 +125,15 @@ class DrawViewController: UIViewController, WebSocketDelegate {
         
         drawPage.image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
+         }else {
+            return
+        }
         
     }
     
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+   
         moved = true
         
         if let touch = touches.first {
@@ -118,6 +143,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
             lastPoint = currentPoint
             
         }
+    
     }
     
     
