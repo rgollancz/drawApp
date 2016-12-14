@@ -25,7 +25,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
         colorPickerViewController.didMove(toParentViewController: self)
     }
     
-    let socket = WebSocket(url: URL(string: "IP ADDRESS")!)
+    let socket = WebSocket(url: URL(string: "http://192.168.48.96:3000")!)
     var badText: String?
     var lastPoint = CGPoint.zero
     var moved = false
@@ -139,7 +139,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     
     func sendString() {
         let stringArray = coordinatesArray.flatMap { String(describing: $0) }
-        let string = stringArray.joined(separator: "-")
+        let string = stringArray.joined(separator: ",")
         socket.write(string: string)
         
     }
