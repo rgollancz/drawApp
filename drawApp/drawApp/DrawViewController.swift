@@ -27,7 +27,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
         colorPickerViewController.didMove(toParentViewController: self)
     }
     
-    let socket = WebSocket(url: URL(string: "ws://localhost:3000/")!)
+    let socket = WebSocket(url: URL(string: "IP ADD")!)
     var badText: String?
     var lastPoint = CGPoint.zero
     var moved = false
@@ -166,9 +166,8 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     
    
     @IBAction func clear(_ sender: UIButton) {
-        print(coordinatesArray);
-        print(JSONSerialization.isValidJSONObject(coordinatesArray))
         drawPage.image = nil;
+        coordinatesArray = []
     }
     
     @IBAction func backButton(_ sender: Any) {
@@ -176,18 +175,15 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     }
     
     @IBAction func submitButton(_ sender: Any) {
-        makingString()
+        sendString()
     }
     
     func websocketDidConnect(_ socket: WebSocket) {
-        
+        socket.write(string: currentWord.text!)
     }
     
     func websocketDidDisconnect(_ socket: WebSocket, error: NSError?) {
-        
     }
-    
-    @IBOutlet weak var test: UILabel!
     
     public func websocketDidReceiveMessage(_ socket: Starscream.WebSocket, text: String) {
         print("hello")
@@ -195,11 +191,10 @@ class DrawViewController: UIViewController, WebSocketDelegate {
 
     }
     
+    
     public func websocketDidReceiveData(_ socket: Starscream.WebSocket, data: Data) {
-        print("hello")
-        print(data)
+    
     }
-
     
     func makingString () {
         do {
@@ -212,6 +207,5 @@ class DrawViewController: UIViewController, WebSocketDelegate {
         }
         socket.write(data: jsonData)
     }
-
 }
 

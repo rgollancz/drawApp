@@ -40,7 +40,7 @@
 /* Begin PBXFileReference section */
 		557A2342B44E13079E3128EB /* Pods-drawApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-drawApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-drawApp/Pods-drawApp.debug.xcconfig"; sourceTree = "<group>"; };
 		B22978507BF88D95095E7E10 /* Pods_drawApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_drawApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DC9783F31DF96C7600EFC135 /* DrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawViewController.swift; sourceTree = "<group>"; };
+		DC9783F31DF96C7600EFC135 /* DrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		DC9B68031DFC7B5500A94D98 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		DCD84BC61DF6D743009B298C /* drawApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = drawApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCD84BC91DF6D743009B298C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };

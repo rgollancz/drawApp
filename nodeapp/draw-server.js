@@ -35,26 +35,25 @@ wsServer.on('request', function(request) {
     var connection = request.accept(null, request.origin);
     // we need to know client index to remove them on 'close' event
     var index = players.push(connection) - 1;
-    var drawings = "";
+    var name = false;
     console.log((new Date()) + ' Connection accepted.');
 
     // user completed new drawing
     connection.on('message', function(message) {
       // console.log(message);
         if (message.type === 'utf8') { // accept only text
+          if (name === false) {
                 name = htmlEntities(message.utf8Data);
-                connection.sendUTF(JSON.stringify({ name: name }));
-
-            } else {
-              // broadcast message to all connected clients
-              data = (message);
-              var json = JSON.stringify({data: data});
-
-              // var json = JSON.stringify({ data: data });
-              for (var i=0; i < players.length; i++) {
-                  players[i].send(json);
+                for (var i=0; i < players.length; i++) {
+                  players[i].sendUTF(JSON.stringify({type:'name', data: name}));
+                }
+            } else { //send coordinates
+              drawing = htmlEntities(message.utf8Data);
+              for (var x=0; x < players.length; x++) {
+                players[x].sendUTF(JSON.stringify({type:'drawing', data: drawing}));
               }
-          }
+            }
+        }
       });
     // user disconnected
     connection.on('close', function(connection) {
