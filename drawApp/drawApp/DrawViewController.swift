@@ -196,16 +196,11 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     
     }
     
-    func makingString () {
-        do {
-            
-            //Convert to Data
-            jsonData = try JSONSerialization.data(withJSONObject: coordinatesArray, options: JSONSerialization.WritingOptions.prettyPrinted)
-            
-        } catch {
-            return
-        }
-        socket.write(data: jsonData)
+    func sendString() {
+        let stringArray = coordinatesArray.flatMap { String(describing: $0) }
+        let string = stringArray.joined(separator: ",")
+        socket.write(string: string)
+        
     }
 }
 
