@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "play_button_med.png",
+      "filename" : "Incorrect_label_300x68.png",
       "scale" : "1x"
     },
     {
@@ -11,7 +11,6 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "play_button_150x75.png",
       "scale" : "3x"
     }
   ],

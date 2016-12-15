@@ -22,15 +22,6 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     @IBOutlet var clearButtonLabel: UIButton!
     
     
-    
-    @IBAction func showColorPicker(_ sender: Any) {
-        let colorPickerViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "colorPickerId") as! ColorPickerViewController
-        self.addChildViewController(colorPickerViewController)
-        colorPickerViewController.view.frame = self.view.frame
-        self.view.addSubview(colorPickerViewController.view)
-        colorPickerViewController.didMove(toParentViewController: self)
-    }
-    
     let socket = WebSocket(url: URL(string: "http://192.168.48.104:3000")!)
     var badText: String?
     var lastPoint = CGPoint.zero
@@ -42,10 +33,8 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     var timerFlash = Timer()
     var counterFlash = 15
 
-   
-   
+
     @IBOutlet var counterLabel: UILabel!
-   
     @IBOutlet var submitButtonLabel: UIButton!
     
     let wordArray: [String] = ["CAT","TEAPOT","APPLE","BALLOON","NICKELBACK","GIRAFFE","HEADPHONES","MOUNTAIN","ROCK CLIMBING","FAMILY","CELEBRATE","KITE","WORLD MAP","HUMAN MIND","PUG","TIME","SISTINE CHAPEL","CAKE"]
