@@ -19,6 +19,10 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     @IBOutlet weak var clear: UIButton!
     @IBOutlet var currentWord: UILabel!
     
+    @IBOutlet var clearButtonLabel: UIButton!
+    
+    
+    
     @IBAction func showColorPicker(_ sender: Any) {
         let colorPickerViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "colorPickerId") as! ColorPickerViewController
         self.addChildViewController(colorPickerViewController)
@@ -27,7 +31,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
         colorPickerViewController.didMove(toParentViewController: self)
     }
     
-    let socket = WebSocket(url: URL(string: "IP ADD")!)
+    let socket = WebSocket(url: URL(string: "ws://localhost:3000/")!)
     var badText: String?
     var lastPoint = CGPoint.zero
     var moved = false
@@ -39,9 +43,9 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     var counterFlash = 3
 
    
+   
     @IBOutlet var counterLabel: UILabel!
    
-    @IBOutlet var clearButtonLabel: UIButton!
     @IBOutlet var submitButtonLabel: UIButton!
     
     let wordArray: [String] = ["CAT","TEAPOT","APPLE","BALLOON","NICKELBACK","GIRAFFE","HEADPHONES","MOUNTAIN","ROCK CLIMBING","FAMILY","CELEBRATE","KITE","WORLD MAP","HUMAN MIND","PUG","TIME","SISTINE CHAPEL","CAKE"]

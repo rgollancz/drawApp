@@ -125,12 +125,6 @@
                                     <action selector="submitButton:" destination="NU5-Hi-tNp" eventType="touchUpInside" id="zYd-DD-uBT"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9sZ-e8-Z58">
-                                <rect key="frame" x="63" y="200" width="317" height="50"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Timer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Pr-LP-NfC">
                                 <rect key="frame" x="126" y="81" width="162" height="22"/>
                                 <constraints>
@@ -163,7 +157,6 @@
                             <constraint firstItem="EWr-cR-1b4" firstAttribute="top" secondItem="CkQ-NG-xkm" secondAttribute="bottom" constant="-9" id="A7c-aR-rLH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3v2-Qg-hM5" secondAttribute="trailing" constant="106" id="Apw-F1-MRb"/>
                             <constraint firstAttribute="trailing" secondItem="rHM-28-mHV" secondAttribute="trailing" constant="10" id="D50-DE-aQ1"/>
-                            <constraint firstItem="9sZ-e8-Z58" firstAttribute="top" secondItem="2Pr-LP-NfC" secondAttribute="bottom" constant="97" id="H7U-ph-V9D"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vAC-W5-FyP" secondAttribute="trailing" constant="-20" id="Hj4-Lr-GrK"/>
                             <constraint firstItem="CkQ-NG-xkm" firstAttribute="top" secondItem="g3Y-2t-fxm" secondAttribute="bottom" id="IDi-7r-3MK"/>
                             <constraint firstItem="2Pr-LP-NfC" firstAttribute="top" secondItem="CkQ-NG-xkm" secondAttribute="bottom" constant="21" id="IVB-Uc-cw4"/>
@@ -191,13 +184,12 @@
                     </view>
                     <connections>
                         <outlet property="clear" destination="rHM-28-mHV" id="ldl-0a-I9K"/>
-                        <outlet property="clearButtonLabel" destination="rHM-28-mHV" id="GLd-iU-O95"/>
-                        <outlet property="counterLabel" destination="2Pr-LP-NfC" id="uO6-O9-dlh"/>
+                        <outlet property="clearButtonLabel" destination="rHM-28-mHV" id="bkz-UL-xtH"/>
+                        <outlet property="counterLabel" destination="2Pr-LP-NfC" id="7Ma-Th-mMW"/>
                         <outlet property="currentWord" destination="nni-Hp-HCg" id="HSp-no-Rwz"/>
                         <outlet property="drawPage" destination="vAC-W5-FyP" id="Oky-vL-DbW"/>
                         <outlet property="nameLabel" destination="CkQ-NG-xkm" id="1gM-RF-OOp"/>
                         <outlet property="submitButtonLabel" destination="3v2-Qg-hM5" id="DbR-zY-WZe"/>
-                        <outlet property="test" destination="9sZ-e8-Z58" id="SWF-6u-yBn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Kh-xk-eou" userLabel="First Responder" sceneMemberID="firstResponder"/>
