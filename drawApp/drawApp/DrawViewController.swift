@@ -33,7 +33,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     @IBOutlet var submitButtonLabel: UIButton!
     var nibColour = UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 1.0).cgColor
     var coordinatesArray = [[Float]]()
-    let wordArray: [String] = ["CAT","TEAPOT","APPLE","BALLOON","NICKELBACK","GIRAFFE","HEADPHONES","MOUNTAIN","ROCK CLIMBING","FAMILY","CELEBRATE","KITE","WORLD MAP","HUMAN MIND","PUG","TIME","SISTINE CHAPEL","CAKE"]
+    let wordArray: [String] = ["CAT","TEAPOT","APPLE","BALLOON","FIREWORKS","GIRAFFE","HEADPHONES","MOUNTAIN","ROCK CLIMBING","FAMILY","CELEBRATE","KITE","WORLD MAP","HUMAN MIND","PUG","TIME","SISTINE CHAPEL","CAKE", "CHRISTMAS TREE", "ANNA BEDDOW"]
     var word: String?
     @IBOutlet var colourOptions: UIView!
     
@@ -142,8 +142,17 @@ class DrawViewController: UIViewController, WebSocketDelegate {
         performSegue(withIdentifier: "backButton", sender: sender )
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender:Any?) {
+        if segue.identifier == "showSentViewController" {
+            if let destination = segue.destination as? SentViewController {
+              destination.badText = self.badText!
+            }
+        }
+    }
+    
     @IBAction func submitButton(_ sender: Any) {
         sendString()
+        performSegue(withIdentifier: "showSentViewController", sender: sender)
     }
     
     func websocketDidConnect(_ socket: WebSocket) {
@@ -173,27 +182,33 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     
     @IBAction func paintPink(_ sender: UIButton) {
         nibColour = UIColor(red: 1.0, green: 0.53, blue: 0.96, alpha: 1.0).cgColor
+        colourOptions.isHidden = true
     }
     
     @IBAction func paintGreen(_ sender: UIButton) {
         nibColour = UIColor(red: 0.0, green: 1.0, blue: 0.20, alpha: 1.0).cgColor
+        colourOptions.isHidden = true
     }
     
     @IBAction func paintBlue(_ sender: UIButton) {
        nibColour = UIColor(red: 0.26, green: 0.53, blue: 0.96, alpha: 1.0).cgColor
+         colourOptions.isHidden = true
     }
     
     @IBAction func paintRed(_ sender: UIButton) {
           nibColour = UIColor(red: 1.0, green: 0.00, blue: 0.00, alpha: 1.0).cgColor
+        colourOptions.isHidden = true
     }
     
     @IBAction func paintBlack(_ sender: Any) {
          nibColour = UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 1.0).cgColor
+        colourOptions.isHidden = true
     }
   
     
     @IBAction func paintYellow(_ sender: UIButton) {
         nibColour = UIColor(red: 1.00, green: 1.00, blue: 0.00, alpha: 1.0).cgColor
+        colourOptions.isHidden = true
     }
     
     }

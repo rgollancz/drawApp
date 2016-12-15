@@ -10,6 +10,7 @@
 		323691FA1E02EC8500BBCFE4 /* dotty.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 323691F71E02EC8500BBCFE4 /* dotty.ttf */; };
 		323691FB1E02EC8500BBCFE4 /* logan_kruger read me.html in Resources */ = {isa = PBXBuildFile; fileRef = 323691F81E02EC8500BBCFE4 /* logan_kruger read me.html */; };
 		323691FC1E02EC8500BBCFE4 /* logan_kruger read me.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 323691F91E02EC8500BBCFE4 /* logan_kruger read me.rtf */; };
+		323692021E03089900BBCFE4 /* SentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323692011E03089900BBCFE4 /* SentViewController.swift */; };
 		76C0BE374642F240A12FC12A /* Pods_drawApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B22978507BF88D95095E7E10 /* Pods_drawApp.framework */; };
 		DC9783F41DF96C7600EFC135 /* DrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9783F31DF96C7600EFC135 /* DrawViewController.swift */; };
 		DCD84BCA1DF6D743009B298C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD84BC91DF6D743009B298C /* AppDelegate.swift */; };
@@ -43,6 +44,7 @@
 		323691F71E02EC8500BBCFE4 /* dotty.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = dotty.ttf; sourceTree = "<group>"; };
 		323691F81E02EC8500BBCFE4 /* logan_kruger read me.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "logan_kruger read me.html"; sourceTree = "<group>"; };
 		323691F91E02EC8500BBCFE4 /* logan_kruger read me.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "logan_kruger read me.rtf"; sourceTree = "<group>"; };
+		323692011E03089900BBCFE4 /* SentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentViewController.swift; sourceTree = "<group>"; };
 		557A2342B44E13079E3128EB /* Pods-drawApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-drawApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-drawApp/Pods-drawApp.debug.xcconfig"; sourceTree = "<group>"; };
 		B22978507BF88D95095E7E10 /* Pods_drawApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_drawApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC9783F31DF96C7600EFC135 /* DrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -142,6 +144,7 @@
 				DCD84BD21DF6D743009B298C /* Assets.xcassets */,
 				DCD84BD41DF6D743009B298C /* LaunchScreen.storyboard */,
 				DCD84BD71DF6D743009B298C /* Info.plist */,
+				323692011E03089900BBCFE4 /* SentViewController.swift */,
 			);
 			path = drawApp;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 			files = (
 				DCD84BCE1DF6D743009B298C /* SecondViewController.swift in Sources */,
 				DCD84BCA1DF6D743009B298C /* AppDelegate.swift in Sources */,
+				323692021E03089900BBCFE4 /* SentViewController.swift in Sources */,
 				DC9783F41DF96C7600EFC135 /* DrawViewController.swift in Sources */,
 				DCD84BCC1DF6D743009B298C /* FirstViewController.swift in Sources */,
 			);
