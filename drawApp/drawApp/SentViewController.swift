@@ -10,15 +10,14 @@ import UIKit
 
 class SentViewController: UIViewController {
     
+    //MARK: Properties
+    
     var badText: String?
-
     @IBOutlet var sentLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         sentLabel.text = "\(badText!), your drawing is \n off to be judged!"
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,7 +25,6 @@ class SentViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
     override func prepare(for segue: UIStoryboardSegue, sender:Any?) {
         if segue.identifier == "backDrawViewController" {
             if let destination = segue.destination as? DrawViewController {
@@ -34,7 +32,6 @@ class SentViewController: UIViewController {
             }
         }
     }
-    
     
     @IBAction func playAgainButton(_ sender: Any) {
         performSegue(withIdentifier: "backDrawViewController", sender: sender)

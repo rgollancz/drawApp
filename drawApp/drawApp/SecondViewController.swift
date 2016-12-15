@@ -11,6 +11,8 @@ import Starscream
 
 class SecondViewController: UIViewController, UITextFieldDelegate, WebSocketDelegate {
     
+    //MARK: Properties
+    
     var answer: String?
     var guess: String?
     var receivedDrawing: String?
@@ -35,6 +37,8 @@ class SecondViewController: UIViewController, UITextFieldDelegate, WebSocketDele
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    //MARK: Actions
     
     @IBAction func drawPageButton(_ sender: Any) {
         performSegue(withIdentifier: "showTab", sender: sender )
@@ -106,7 +110,6 @@ class SecondViewController: UIViewController, UITextFieldDelegate, WebSocketDele
         drawCoordinates(result)
     }
     
-    
     func drawCoordinates(_ array: [[Double]]) {
         for (elem) in array {
         let fromX = elem[0]
@@ -133,7 +136,6 @@ class SecondViewController: UIViewController, UITextFieldDelegate, WebSocketDele
         }
     }
 
-
     public func websocketDidReceiveMessage(_ socket: Starscream.WebSocket, text: String) {
         guard let data = text.data(using: .utf16),
             let jsonData = try? JSONSerialization.jsonObject(with: data),
@@ -150,8 +152,7 @@ class SecondViewController: UIViewController, UITextFieldDelegate, WebSocketDele
             drawingReceived(drawing!)
         }
     }
-    
-    
+
     public func websocketDidReceiveData(_ socket: Starscream.WebSocket, data: Data) {
     }
     

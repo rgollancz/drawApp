@@ -12,6 +12,7 @@ import Starscream
 
 
 class DrawViewController: UIViewController, WebSocketDelegate {
+    
     //MARK: Properties
     
     @IBOutlet weak var drawPage: UIImageView!
@@ -211,7 +212,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
         colourOptions.isHidden = true
     }
     
-    }
+}
 
 
 

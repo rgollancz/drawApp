@@ -11,14 +11,10 @@ import UIKit
 
 final class FirstViewController: UIViewController, UITextFieldDelegate, WebSocketDelegate {
     
-    let socket = WebSocket(url: URL(string: "ws://localhost:3000/")!)
-    
     //MARK: Properties
-    
+    let socket = WebSocket(url: URL(string: "ws://localhost:3000/")!)
     @IBOutlet weak var nameText: UITextField!
     var badText : String?
-    
-    
     @IBOutlet weak var myLabel: UILabel!
     
     override func viewDidLoad() {
@@ -28,17 +24,17 @@ final class FirstViewController: UIViewController, UITextFieldDelegate, WebSocke
         nameText.delegate = self
     }
     
+    //MARK: Actions
+    
     deinit {
         socket.disconnect(forceTimeout: 0)
         socket.delegate = nil
     }
 
     func websocketDidConnect(_ socket: WebSocket) {
-    
     }
     
     func websocketDidDisconnect(_ socket: WebSocket, error: NSError?) {
-        
     }
 
     func websocketDidReceiveMessage(_ socket: WebSocket, text: String) {
@@ -52,7 +48,6 @@ final class FirstViewController: UIViewController, UITextFieldDelegate, WebSocke
         if segue.identifier == "showDrawViewController" {
             if let destination = segue.destination as? DrawViewController {
                 destination.badText = self.badText
-                
             }
         }
     }
@@ -67,7 +62,6 @@ final class FirstViewController: UIViewController, UITextFieldDelegate, WebSocke
         badText = textField.text
     }
     
-    //MARK: Actions
     @IBAction func playButton(_ sender: Any) {
         performSegue(withIdentifier: "showDrawViewController", sender: sender );
     }
