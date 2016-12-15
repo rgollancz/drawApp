@@ -33,46 +33,6 @@ class SecondViewController: UIViewController, UITextFieldDelegate, WebSocketDele
         responseIncorrect.isHidden = true
     }
     
-    struct DrawingCoordinate {
-        var from: CGPoint
-        var to: CGPoint
-        init(from: CGPoint, to: CGPoint) {
-            self.from = from
-            self.to = to
-        }
-    }
-    
-//    func transformToCoordinates() {
-//         var array = receivedDrawing from string to array
-//         var arrayCoor = array to array of DrawingCoordinates
-//        
-//    }
-    
-//    func drawCoordinates() {
-//        
-//        for (x, y) in coordinatesArray {
-//        let from = x
-//        let to = y
-//        UIGraphicsBeginImageContextWithOptions(self.picturePage.bounds.size, false, 0.0)
-//            picturePage.image?.draw(in: CGRect(x: 0, y:0, width:self.picturePage.bounds.width, height:self.picturePage.bounds.height))
-//
-//        let context = UIGraphicsGetCurrentContext()
-//        context?.move(to: CGPoint(x: from.0 , y: from.1))
-//        context?.addLine(to: CGPoint(x: to.0, y: to.1))
-//     
-//        context?.setBlendMode(CGBlendMode.color)
-//        context?.setLineCap(CGLineCap.round)
-//        context?.setLineWidth(5)
-//        context?.setStrokeColor(UIColor(red: 0.26, green: 0.53, blue: 0.96, alpha: 1.0).cgColor)
-//            
-//        context?.strokePath()
-//        
-//        picturePage.image = UIGraphicsGetImageFromCurrentImageContext()
-//        UIGraphicsEndImageContext()
-//        
-//        }
-//    }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -125,15 +85,57 @@ class SecondViewController: UIViewController, UITextFieldDelegate, WebSocketDele
     
     func nameReceived(_ name: String) {
         answer = name;
-        print(answer)
     }
     
     func drawingReceived(_ drawing: String) {
         receivedDrawing = drawing;
-//        transformToArray()
-//        transformToCoordinates, e.g. coordinatesArray.append(DrawingCoordinate(from: fromPoint, to: toPoint))
-//        drawCoordinates()
+        
+        let scanner = Scanner(string: receivedDrawing!)
+        scanner.charactersToBeSkipped = CharacterSet(charactersIn: "[], ")
+        
+        // Build the flat array
+        var numbers = [Double]()
+        while !scanner.isAtEnd {
+            var d = 0.0
+            if scanner.scanDouble(&d) {
+                numbers.append(d)
+            }
+        }
+        // Now the 2 dimensional array
+        let result = stride(from: 0, to: numbers.count, by: 4).map { startIndex -> [Double] in
+            let endIndex = min(startIndex + 4, numbers.count)
+            return Array(numbers[startIndex..<endIndex])
+        }
+        drawCoordinates(result)
     }
+    
+    
+    func drawCoordinates(_ array: [[Double]]) {
+        for (elem) in array {
+        let fromX = elem[0]
+        let fromY = elem[1]
+        let toX = elem[2]
+        let toY = elem[3]
+        UIGraphicsBeginImageContextWithOptions(self.picturePage.bounds.size, false, 0.0)
+            picturePage.image?.draw(in: CGRect(x: 0, y:0, width:self.picturePage.bounds.width, height:self.picturePage.bounds.height))
+    
+        let context = UIGraphicsGetCurrentContext()
+        context?.move(to: CGPoint(x: fromX , y: fromY))
+        context?.addLine(to: CGPoint(x: toX, y: toY))
+    
+        context?.setBlendMode(CGBlendMode.color)
+        context?.setLineCap(CGLineCap.round)
+        context?.setLineWidth(5)
+        context?.setStrokeColor(UIColor(red: 0.26, green: 0.53, blue: 0.96, alpha: 1.0).cgColor)
+    
+        context?.strokePath()
+    
+        picturePage.image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+            
+        }
+    }
+
     
     public func websocketDidReceiveMessage(_ socket: Starscream.WebSocket, text: String) {
         guard let data = text.data(using: .utf16),
