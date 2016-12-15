@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2659" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina5_5" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -19,37 +18,22 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pencil_background_graph_paper" translatesAutoresizingMaskIntoConstraints="NO" id="TaB-vq-ePz">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DRAWSOME_300x77" translatesAutoresizingMaskIntoConstraints="NO" id="rwU-Xy-E7E">
-                                <rect key="frame" x="56.666666666666657" y="95" width="300.66666666666663" height="77"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pencil_background_graph_paper" translatesAutoresizingMaskIntoConstraints="NO" id="TaB-vq-ePz">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
-                        <constraints>
-                            <constraint firstItem="TaB-vq-ePz" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="4n9-xI-695"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="TaB-vq-ePz" secondAttribute="bottom" id="5S9-DL-qwy"/>
-                            <constraint firstItem="TaB-vq-ePz" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Bjj-DF-IOH"/>
-                            <constraint firstItem="rwU-Xy-E7E" firstAttribute="centerX" secondItem="TaB-vq-ePz" secondAttribute="centerX" id="CH1-fa-qCA"/>
-                            <constraint firstItem="rwU-Xy-E7E" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="75" id="Ko4-sL-KLW"/>
-                            <constraint firstItem="rwU-Xy-E7E" firstAttribute="width" secondItem="TaB-vq-ePz" secondAttribute="height" multiplier="75:184" id="QIf-n8-M6a"/>
-                            <constraint firstItem="TaB-vq-ePz" firstAttribute="width" secondItem="rwU-Xy-E7E" secondAttribute="height" multiplier="414:77" id="Ytb-Pn-CaX"/>
-                            <constraint firstAttribute="trailing" secondItem="TaB-vq-ePz" secondAttribute="trailing" id="cub-Ie-bqN"/>
-                            <constraint firstItem="rwU-Xy-E7E" firstAttribute="centerX" secondItem="TaB-vq-ePz" secondAttribute="centerX" id="dca-gw-9Vc"/>
-                            <constraint firstItem="TaB-vq-ePz" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="rLs-Cw-2RQ"/>
-                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="48.799999999999997" y="372.86356821589209"/>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
     <resources>
-        <image name="DRAWSOME_300x77" width="300" height="77"/>
         <image name="pencil_background_graph_paper" width="375" height="667"/>
     </resources>
 </document>
