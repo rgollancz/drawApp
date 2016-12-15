@@ -14,15 +14,12 @@ class SecondViewController: UIViewController, UITextFieldDelegate, WebSocketDele
     var answer: String?
     var guess: String?
     var receivedDrawing: String?
-    var coordinatesArray = [DrawingCoordinate]()
-    
     let socket = WebSocket(url: URL(string: "IP ADD")!)
 
     @IBOutlet var guessPicture: UITextField!
     @IBOutlet weak var picturePage: UIImageView!
     @IBOutlet var responseCorrect: UIView!
     @IBOutlet var responseIncorrect: UIView!
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -165,7 +162,7 @@ class SecondViewController: UIViewController, UITextFieldDelegate, WebSocketDele
         }
     }
 
-    
+
     public func websocketDidReceiveMessage(_ socket: Starscream.WebSocket, text: String) {
         guard let data = text.data(using: .utf16),
             let jsonData = try? JSONSerialization.jsonObject(with: data),
