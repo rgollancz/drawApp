@@ -95,6 +95,7 @@
 		DCD84BBD1DF6D743009B298C = {
 			isa = PBXGroup;
 			children = (
+				323691F61E02EC8500BBCFE4 /* dotty */,
 				DCD84BC81DF6D743009B298C /* drawApp */,
 				DCD84BDF1DF6D743009B298C /* drawAppTests */,
 				DCD84BEA1DF6D743009B298C /* drawAppUITests */,
