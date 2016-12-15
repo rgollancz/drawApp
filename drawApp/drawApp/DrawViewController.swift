@@ -19,7 +19,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     @IBOutlet weak var clear: UIButton!
     @IBOutlet var currentWord: UILabel!
     @IBOutlet var clearButtonLabel: UIButton!
-    let socket = WebSocket(url: URL(string: "http://192.168.48.104:3000")!)
+    let socket = WebSocket(url: URL(string: "ws://localhost:3000/")!)
     var badText: String?
     var lastPoint = CGPoint.zero
     var moved = false
