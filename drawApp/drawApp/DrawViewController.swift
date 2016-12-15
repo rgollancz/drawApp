@@ -18,10 +18,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var clear: UIButton!
     @IBOutlet var currentWord: UILabel!
-    
     @IBOutlet var clearButtonLabel: UIButton!
-    
-    
     let socket = WebSocket(url: URL(string: "http://192.168.48.104:3000")!)
     var badText: String?
     var lastPoint = CGPoint.zero
@@ -32,10 +29,9 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     var drawingAllowed = true
     var timerFlash = Timer()
     var counterFlash = 15
-
-
     @IBOutlet var counterLabel: UILabel!
     @IBOutlet var submitButtonLabel: UIButton!
+    var nibcolour = UIColor(red: 0.26, green: 0.53, blue: 0.96, alpha: 1.0).cgColor)
     
     let wordArray: [String] = ["CAT","TEAPOT","APPLE","BALLOON","NICKELBACK","GIRAFFE","HEADPHONES","MOUNTAIN","ROCK CLIMBING","FAMILY","CELEBRATE","KITE","WORLD MAP","HUMAN MIND","PUG","TIME","SISTINE CHAPEL","CAKE"]
     var word: String?
@@ -97,17 +93,6 @@ class DrawViewController: UIViewController, WebSocketDelegate {
         let randomIndex = Int(arc4random_uniform(UInt32(wordArray.count)))
         word = wordArray[randomIndex]
     }
-    
-    struct DrawingCoordinate {
-        var from: CGPoint
-        var to: CGPoint
-        init(from: CGPoint, to: CGPoint) {
-            self.from = from
-            self.to = to
-        }
-    }
-    
-   
     
     var coordinatesArray = [[Float]]()
     
@@ -198,5 +183,35 @@ class DrawViewController: UIViewController, WebSocketDelegate {
         socket.write(string: string)
         
     }
+    
+    
+    @IBAction func paintPink(_ sender: UIButton) {
+        nibcolour = UIColor(red: 1.0, green: 0.53, blue: 0.96, alpha: 1.0).cgColor
+    }
+    
+    @IBAction func paintGreen(_ sender: Any) {
+        nibcolour = UIColor(red: 0.0, green: 1.0, blue: 0.20, alpha: 1.0).cgColor
+    }
+    
+    @IBAction func paintBlue(_ sender: Any) {
+        nibcolour = UIColor(red: 0.26, green: 0.53, blue: 0.96, alpha: 1.0).cgColor
+    }
+    
+    @IBAction func paintRed(_ sender: Any) {
+        nibcolour = UIColor(red: 1.0, green: 0.00, blue: 0.00, alpha: 1.0).cgColor
+    }
+    
+    @IBAction func paintBlack(_ sender: Any) {
+        nibcolour = UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 1.0).cgColor
+    }
+    
+    
+    @IBAction func paintYellow(_ sender: Any) {
+        currentColor = UIColor(red: 1.00, green: 1.00, blue: 0.00, alpha: 1.0).cgColor
+    }
+    
 }
+
+
+
 
