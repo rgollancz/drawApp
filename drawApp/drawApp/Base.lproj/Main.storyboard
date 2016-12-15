@@ -275,26 +275,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" fixedFrame="YES" image="background_graph_paper" translatesAutoresizingMaskIntoConstraints="NO" id="JOe-Nb-yN7">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" ambiguous="YES" misplaced="YES" image="background_graph_paper" translatesAutoresizingMaskIntoConstraints="NO" id="JOe-Nb-yN7">
                                 <rect key="frame" x="-10" y="-10" width="385" height="687"/>
-                                <autoresizingMask key="autoresizingMask"/>
                             </imageView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="OYU-bF-Z7x">
-                                <rect key="frame" x="171" y="242" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="OYU-bF-Z7x">
+                                <rect key="frame" x="177" y="296" width="20" height="20"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0nX-6z-tN4">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0nX-6z-tN4">
                                 <rect key="frame" x="85" y="345" width="204" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="Play_again_button_236x50"/>
                                 <connections>
                                     <segue destination="NU5-Hi-tNp" kind="show" identifier="backDrawViewController" id="pRS-kw-nOf"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sent text" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ub9-HX-euB">
-                                <rect key="frame" x="58" y="107" width="259" height="117"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Sent text" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ub9-HX-euB">
+                                <rect key="frame" x="69" y="154" width="259" height="117"/>
                                 <fontDescription key="fontDescription" name="dotty" family="dotty" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -302,6 +298,12 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="OYU-bF-Z7x" firstAttribute="centerY" secondItem="JOe-Nb-yN7" secondAttribute="centerY" id="6yx-QJ-aKk"/>
+                            <constraint firstItem="0nX-6z-tN4" firstAttribute="centerX" secondItem="JOe-Nb-yN7" secondAttribute="centerX" id="8Om-lJ-HBI"/>
+                            <constraint firstItem="ub9-HX-euB" firstAttribute="centerX" secondItem="JOe-Nb-yN7" secondAttribute="centerX" id="guV-4Z-mvB"/>
+                            <constraint firstItem="OYU-bF-Z7x" firstAttribute="centerX" secondItem="JOe-Nb-yN7" secondAttribute="centerX" id="pfW-vW-HFy"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="sentLabel" destination="ub9-HX-euB" id="4LX-xM-XSo"/>
