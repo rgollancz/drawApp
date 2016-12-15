@@ -37,10 +37,10 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     var moved = false
     var jsonData : Data!
     var timer = Timer()
-    var counter = 5
+    var counter = 15
     var drawingAllowed = true
     var timerFlash = Timer()
-    var counterFlash = 3
+    var counterFlash = 15
 
    
    
@@ -54,8 +54,9 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        counterLabel.text = String(counter)
+        counterLabel.text = String("00:\(counter)")
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+           flashTimer()
         self.nameLabel.text = badText
         self.setCurrentWord()
         self.currentWord.text = word
@@ -71,11 +72,13 @@ class DrawViewController: UIViewController, WebSocketDelegate {
             timer.invalidate()
             counterLabel.text = String("Time's up!")
             changeViewOfButtons()
-            flashTimer()
+            timerFlash.invalidate()
    
         } else{
+         
             counter -= 1
-            counterLabel.text = String(counter)
+            counterLabel.text = String("00:\(counter)")
+            
         }
     }
     
@@ -87,7 +90,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     }
     
     func flashTimer () {
-        timerFlash = Timer.scheduledTimer(timeInterval: 0.4, target: self, selector: #selector(flashTimerAction), userInfo: nil, repeats: true)
+        timerFlash = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(flashTimerAction), userInfo: nil, repeats: true)
     }
     
     func flashTimerAction() {
