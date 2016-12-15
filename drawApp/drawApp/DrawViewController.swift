@@ -145,6 +145,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
             let currentPoint = touch.location(in: self.drawPage)
             drawPicture(fromPoint: lastPoint, toPoint: currentPoint)
             lastPoint = currentPoint
+        
         }
     }
     
