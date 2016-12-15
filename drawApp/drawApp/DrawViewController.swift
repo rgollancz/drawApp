@@ -25,17 +25,17 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     var moved = false
     var jsonData : Data!
     var timer = Timer()
-    var counter = 15
+    var counter = 20
     var drawingAllowed = true
     var timerFlash = Timer()
-    var counterFlash = 15
+    var counterFlash = 20
     @IBOutlet var counterLabel: UILabel!
     @IBOutlet var submitButtonLabel: UIButton!
-    var nibcolour = UIColor(red: 0.26, green: 0.53, blue: 0.96, alpha: 1.0).cgColor)
-    
+    var nibColour = UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 1.0).cgColor
+    var coordinatesArray = [[Float]]()
     let wordArray: [String] = ["CAT","TEAPOT","APPLE","BALLOON","NICKELBACK","GIRAFFE","HEADPHONES","MOUNTAIN","ROCK CLIMBING","FAMILY","CELEBRATE","KITE","WORLD MAP","HUMAN MIND","PUG","TIME","SISTINE CHAPEL","CAKE"]
     var word: String?
-    
+    @IBOutlet var colourOptions: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +48,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
         socket.delegate = self
         socket.connect()
         submitButtonLabel.isHidden = true
+        colourOptions.isHidden = true
     }
     
    //MARK: Actions
@@ -58,12 +59,9 @@ class DrawViewController: UIViewController, WebSocketDelegate {
             counterLabel.text = String("Time's up!")
             changeViewOfButtons()
             timerFlash.invalidate()
-   
         } else{
-         
             counter -= 1
             counterLabel.text = String("00:\(counter)")
-            
         }
     }
     
@@ -93,29 +91,21 @@ class DrawViewController: UIViewController, WebSocketDelegate {
         let randomIndex = Int(arc4random_uniform(UInt32(wordArray.count)))
         word = wordArray[randomIndex]
     }
-    
-    var coordinatesArray = [[Float]]()
-    
-    
+   
     func drawPicture(fromPoint:CGPoint, toPoint:CGPoint) {
          if drawingAllowed == true {
         UIGraphicsBeginImageContextWithOptions(self.drawPage.bounds.size, false, 0.0)
         drawPage.image?.draw(in: CGRect(x: 0, y:0, width:self.drawPage.bounds.width, height:self.drawPage.bounds.height))
         let context = UIGraphicsGetCurrentContext()
-        
         context?.move(to: CGPoint(x: fromPoint.x, y: fromPoint.y))
         context?.addLine(to: CGPoint(x: toPoint.x, y: toPoint.y))
-        
         coordinatesArray.append([Float(fromPoint.x), Float(fromPoint.y)])
         coordinatesArray.append([Float(toPoint.x), Float(toPoint.y)])
-        
         context?.setBlendMode(CGBlendMode.color)
         context?.setLineCap(CGLineCap.round)
         context?.setLineWidth(5)
-        context?.setStrokeColor(UIColor(red: 0.26, green: 0.53, blue: 0.96, alpha: 1.0).cgColor)
-        
+        context?.setStrokeColor(nibColour)
         context?.strokePath()
-        
         drawPage.image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
          } else {
@@ -123,24 +113,20 @@ class DrawViewController: UIViewController, WebSocketDelegate {
         }
     }
     
-    
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         moved = true
         if let touch = touches.first {
             let currentPoint = touch.location(in: self.drawPage)
             drawPicture(fromPoint: lastPoint, toPoint: currentPoint)
             lastPoint = currentPoint
-        
         }
     }
-    
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if !moved {
             drawPicture(fromPoint: lastPoint, toPoint: lastPoint)
         }
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -168,49 +154,50 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     }
     
     public func websocketDidReceiveMessage(_ socket: Starscream.WebSocket, text: String) {
-     
-
     }
     
     
     public func websocketDidReceiveData(_ socket: Starscream.WebSocket, data: Data) {
-    
     }
     
     func sendString() {
         let stringArray = coordinatesArray.flatMap { String(describing: $0) }
         let string = stringArray.joined(separator: ",")
         socket.write(string: string)
-        
     }
     
+    
+    @IBAction func colourWheel(_ sender: Any) {
+        colourOptions.isHidden = (colourOptions.isHidden == true) ? false: true
+    }
     
     @IBAction func paintPink(_ sender: UIButton) {
-        nibcolour = UIColor(red: 1.0, green: 0.53, blue: 0.96, alpha: 1.0).cgColor
+        nibColour = UIColor(red: 1.0, green: 0.53, blue: 0.96, alpha: 1.0).cgColor
     }
     
-    @IBAction func paintGreen(_ sender: Any) {
-        nibcolour = UIColor(red: 0.0, green: 1.0, blue: 0.20, alpha: 1.0).cgColor
+    @IBAction func paintGreen(_ sender: UIButton) {
+        nibColour = UIColor(red: 0.0, green: 1.0, blue: 0.20, alpha: 1.0).cgColor
     }
     
-    @IBAction func paintBlue(_ sender: Any) {
-        nibcolour = UIColor(red: 0.26, green: 0.53, blue: 0.96, alpha: 1.0).cgColor
+    @IBAction func paintBlue(_ sender: UIButton) {
+       nibColour = UIColor(red: 0.26, green: 0.53, blue: 0.96, alpha: 1.0).cgColor
     }
     
-    @IBAction func paintRed(_ sender: Any) {
-        nibcolour = UIColor(red: 1.0, green: 0.00, blue: 0.00, alpha: 1.0).cgColor
+    @IBAction func paintRed(_ sender: UIButton) {
+          nibColour = UIColor(red: 1.0, green: 0.00, blue: 0.00, alpha: 1.0).cgColor
     }
     
     @IBAction func paintBlack(_ sender: Any) {
-        nibcolour = UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 1.0).cgColor
+         nibColour = UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 1.0).cgColor
+    }
+  
+    
+    @IBAction func paintYellow(_ sender: UIButton) {
+        nibColour = UIColor(red: 1.00, green: 1.00, blue: 0.00, alpha: 1.0).cgColor
     }
     
-    
-    @IBAction func paintYellow(_ sender: Any) {
-        currentColor = UIColor(red: 1.00, green: 1.00, blue: 0.00, alpha: 1.0).cgColor
     }
-    
-}
+
 
 
 

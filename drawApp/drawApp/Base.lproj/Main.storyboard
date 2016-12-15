@@ -118,7 +118,7 @@
                                 <rect key="frame" x="291" y="77" width="88" height="81"/>
                                 <state key="normal" image="palette"/>
                                 <connections>
-                                    <action selector="showColorPicker:" destination="NU5-Hi-tNp" eventType="touchUpInside" id="TKp-Bc-x0a"/>
+                                    <action selector="colourWheel:" destination="NU5-Hi-tNp" eventType="touchUpInside" id="bKv-Lw-lIR"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rHM-28-mHV">
@@ -159,35 +159,53 @@
                                 <rect key="frame" x="32" y="130" width="265" height="170"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="803-dg-aQ4">
-                                        <rect key="frame" x="47" y="33" width="46" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="803-dg-aQ4">
+                                        <rect key="frame" x="66" y="8" width="51" height="54"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" title="Pink" image="pink"/>
+                                        <connections>
+                                            <action selector="paintPink:" destination="NU5-Hi-tNp" eventType="touchUpInside" id="IAg-VG-oX9"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="je4-vX-B5b">
-                                        <rect key="frame" x="47" y="70" width="46" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bCD-ll-pLm">
+                                        <rect key="frame" x="30" y="61" width="57" height="48"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" title="G" image="green-paint"/>
+                                        <connections>
+                                            <action selector="paintGreen:" destination="NU5-Hi-tNp" eventType="touchUpInside" id="5jc-IZ-0cF"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uuI-fY-o1d">
-                                        <rect key="frame" x="47" y="108" width="46" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FKw-li-7lR">
+                                        <rect key="frame" x="66" y="117" width="57" height="43"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" title="B" image="blue-paint"/>
+                                        <connections>
+                                            <action selector="paintBlue:" destination="NU5-Hi-tNp" eventType="touchUpInside" id="jqc-YS-fug"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zmc-zd-rfk">
-                                        <rect key="frame" x="179" y="33" width="46" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yls-dJ-lFZ">
+                                        <rect key="frame" x="139" y="12" width="56" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" title="R" image="red-paint"/>
+                                        <connections>
+                                            <action selector="paintRed:" destination="NU5-Hi-tNp" eventType="touchUpInside" id="9SW-9i-yyG"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gpb-rI-aKh">
-                                        <rect key="frame" x="179" y="108" width="46" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xFk-MJ-iDP">
+                                        <rect key="frame" x="167" y="66" width="58" height="43"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" title="Blac" image="black-paint"/>
+                                        <connections>
+                                            <action selector="paintBlack:" destination="NU5-Hi-tNp" eventType="touchUpInside" id="nsa-Y0-nx5"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wox-ec-E7G">
-                                        <rect key="frame" x="179" y="70" width="46" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ewb-mb-nA7">
+                                        <rect key="frame" x="146" y="110" width="42" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" title="Yellow" image="yellow-paint"/>
+                                        <connections>
+                                            <action selector="paintYellow:" destination="NU5-Hi-tNp" eventType="touchUpInside" id="T5r-NZ-Or4"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -225,6 +243,7 @@
                     <connections>
                         <outlet property="clear" destination="rHM-28-mHV" id="ldl-0a-I9K"/>
                         <outlet property="clearButtonLabel" destination="rHM-28-mHV" id="bkz-UL-xtH"/>
+                        <outlet property="colourOptions" destination="agv-bV-VFm" id="5bq-ei-gqv"/>
                         <outlet property="counterLabel" destination="2Pr-LP-NfC" id="7Ma-Th-mMW"/>
                         <outlet property="currentWord" destination="nni-Hp-HCg" id="HSp-no-Rwz"/>
                         <outlet property="drawPage" destination="vAC-W5-FyP" id="Oky-vL-DbW"/>
@@ -391,12 +410,18 @@
         <image name="Incorrect_label_200x46" width="300" height="68"/>
         <image name="Play_again_button_236x50" width="354" height="75"/>
         <image name="background_graph_paper" width="375" height="667"/>
+        <image name="black-paint" width="100" height="100"/>
+        <image name="blue-paint" width="100" height="100"/>
+        <image name="green-paint" width="100" height="100"/>
         <image name="palette" width="70" height="81"/>
         <image name="pencil_tab_icon" width="30" height="30"/>
+        <image name="pink" width="100" height="100"/>
         <image name="play_button" width="100" height="50"/>
         <image name="question_tab_icon" width="30" height="30"/>
+        <image name="red-paint" width="100" height="100"/>
         <image name="submit_button_50x146" width="146" height="50"/>
         <image name="try_again_button_219x50" width="632" height="144"/>
+        <image name="yellow-paint" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="L3e-wh-rGV"/>
