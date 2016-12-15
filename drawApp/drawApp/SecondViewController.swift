@@ -14,7 +14,7 @@ class SecondViewController: UIViewController, UITextFieldDelegate, WebSocketDele
     var answer: String?
     var guess: String?
     var receivedDrawing: String?
-    let socket = WebSocket(url: URL(string: "IP ADD")!)
+    let socket = WebSocket(url: URL(string: "ws://localhost:3000/")!)
 
     @IBOutlet var guessPicture: UITextField!
     @IBOutlet weak var picturePage: UIImageView!
