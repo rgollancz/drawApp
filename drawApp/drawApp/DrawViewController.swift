@@ -22,30 +22,19 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     @IBOutlet var clearButtonLabel: UIButton!
     
     
-    
-    @IBAction func showColorPicker(_ sender: Any) {
-        let colorPickerViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "colorPickerId") as! ColorPickerViewController
-        self.addChildViewController(colorPickerViewController)
-        colorPickerViewController.view.frame = self.view.frame
-        self.view.addSubview(colorPickerViewController.view)
-        colorPickerViewController.didMove(toParentViewController: self)
-    }
-    
     let socket = WebSocket(url: URL(string: "http://192.168.48.104:3000")!)
     var badText: String?
     var lastPoint = CGPoint.zero
     var moved = false
     var jsonData : Data!
     var timer = Timer()
-    var counter = 15
+    var counter = 5
     var drawingAllowed = true
     var timerFlash = Timer()
-    var counterFlash = 15
+    var counterFlash = 3
 
-   
-   
+
     @IBOutlet var counterLabel: UILabel!
-   
     @IBOutlet var submitButtonLabel: UIButton!
     
     let wordArray: [String] = ["CAT","TEAPOT","APPLE","BALLOON","NICKELBACK","GIRAFFE","HEADPHONES","MOUNTAIN","ROCK CLIMBING","FAMILY","CELEBRATE","KITE","WORLD MAP","HUMAN MIND","PUG","TIME","SISTINE CHAPEL","CAKE"]
@@ -54,9 +43,8 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        counterLabel.text = String("00:\(counter)")
+        counterLabel.text = String(counter)
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
-           flashTimer()
         self.nameLabel.text = badText
         self.setCurrentWord()
         self.currentWord.text = word
@@ -72,13 +60,11 @@ class DrawViewController: UIViewController, WebSocketDelegate {
             timer.invalidate()
             counterLabel.text = String("Time's up!")
             changeViewOfButtons()
-            timerFlash.invalidate()
+            flashTimer()
    
         } else{
-         
             counter -= 1
-            counterLabel.text = String("00:\(counter)")
-            
+            counterLabel.text = String(counter)
         }
     }
     
@@ -90,7 +76,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     }
     
     func flashTimer () {
-        timerFlash = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(flashTimerAction), userInfo: nil, repeats: true)
+        timerFlash = Timer.scheduledTimer(timeInterval: 0.4, target: self, selector: #selector(flashTimerAction), userInfo: nil, repeats: true)
     }
     
     func flashTimerAction() {
