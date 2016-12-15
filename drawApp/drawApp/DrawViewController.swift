@@ -31,7 +31,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
         colorPickerViewController.didMove(toParentViewController: self)
     }
     
-    let socket = WebSocket(url: URL(string: "ws://localhost:3000/")!)
+    let socket = WebSocket(url: URL(string: "http://192.168.48.104:3000")!)
     var badText: String?
     var lastPoint = CGPoint.zero
     var moved = false
@@ -190,8 +190,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     }
     
     public func websocketDidReceiveMessage(_ socket: Starscream.WebSocket, text: String) {
-        print("hello")
-
+     
 
     }
     

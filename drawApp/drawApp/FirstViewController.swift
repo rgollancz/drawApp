@@ -11,7 +11,7 @@ import UIKit
 
 final class FirstViewController: UIViewController, UITextFieldDelegate, WebSocketDelegate {
     
-    let socket = WebSocket(url: URL(string: "ws://localhost:3000/")!)
+    let socket = WebSocket(url: URL(string: "http://192.168.48.104:3000")!)
     
     //MARK: Properties
     
