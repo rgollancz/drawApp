@@ -12,6 +12,7 @@ import Starscream
 
 
 class DrawViewController: UIViewController, WebSocketDelegate {
+    //MARK: Properties
     
     @IBOutlet weak var drawPage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -31,22 +32,64 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     var lastPoint = CGPoint.zero
     var moved = false
     var jsonData : Data!
-    
+    var timer = Timer()
+    var counter = 5
+    var drawingAllowed = true
+    var timerFlash = Timer()
+    var counterFlash = 3
+
    
+    @IBOutlet var counterLabel: UILabel!
+   
+    @IBOutlet var clearButtonLabel: UIButton!
+    @IBOutlet var submitButtonLabel: UIButton!
+    
     let wordArray: [String] = ["CAT","TEAPOT","APPLE","BALLOON","NICKELBACK","GIRAFFE","HEADPHONES","MOUNTAIN","ROCK CLIMBING","FAMILY","CELEBRATE","KITE","WORLD MAP","HUMAN MIND","PUG","TIME","SISTINE CHAPEL","CAKE"]
     var word: String?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        counterLabel.text = String(counter)
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
         self.nameLabel.text = badText
         self.setCurrentWord()
         self.currentWord.text = word
         socket.delegate = self
         socket.connect()
+        submitButtonLabel.isHidden = true
     }
     
-
+   //MARK: Actions
+    
+    func updateTimer() {
+        if counter == 0 {
+            timer.invalidate()
+            counterLabel.text = String("Time's up!")
+            changeViewOfButtons()
+            flashTimer()
+   
+        } else{
+            counter -= 1
+            counterLabel.text = String(counter)
+        }
+    }
+    
+    func changeViewOfButtons() {
+        clearButtonLabel.isHidden = true
+        currentWord.isHidden = true
+        submitButtonLabel.isHidden = false
+        drawingAllowed = false
+    }
+    
+    func flashTimer () {
+        timerFlash = Timer.scheduledTimer(timeInterval: 0.4, target: self, selector: #selector(flashTimerAction), userInfo: nil, repeats: true)
+    }
+    
+    func flashTimerAction() {
+        counterLabel.isHidden = (counterLabel.isHidden == true) ? false : true
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         moved = false
         if let touch = touches.first {
@@ -59,9 +102,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
         word = wordArray[randomIndex]
     }
     
-   
-    
-    struct DrawingCoordinate: {
+    struct DrawingCoordinate {
         var from: CGPoint
         var to: CGPoint
         init(from: CGPoint, to: CGPoint) {
@@ -76,6 +117,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     
     
     func drawPicture(fromPoint:CGPoint, toPoint:CGPoint) {
+         if drawingAllowed == true {
         UIGraphicsBeginImageContextWithOptions(self.drawPage.bounds.size, false, 0.0)
         drawPage.image?.draw(in: CGRect(x: 0, y:0, width:self.drawPage.bounds.width, height:self.drawPage.bounds.height))
         let context = UIGraphicsGetCurrentContext()
@@ -95,19 +137,18 @@ class DrawViewController: UIViewController, WebSocketDelegate {
         
         drawPage.image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        
+         } else {
+            return
+        }
     }
     
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         moved = true
-        
         if let touch = touches.first {
             let currentPoint = touch.location(in: self.drawPage)
             drawPicture(fromPoint: lastPoint, toPoint: currentPoint)
-            
             lastPoint = currentPoint
-            
         }
     }
     
@@ -151,13 +192,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     public func websocketDidReceiveMessage(_ socket: Starscream.WebSocket, text: String) {
         print("hello")
 
-//        guard let data = text.data(using: .utf16),
-//        let jsonData = try? JSONSerialization.jsonObject(with: data),
-//        let jsonDict = jsonData as? [String: Any],
-//        let name = jsonDict["name"] as? String else {
-//            return
-//        }
-//        test.text = name
+
     }
     
     public func websocketDidReceiveData(_ socket: Starscream.WebSocket, data: Data) {
@@ -172,14 +207,6 @@ class DrawViewController: UIViewController, WebSocketDelegate {
             //Convert to Data
             jsonData = try JSONSerialization.data(withJSONObject: coordinatesArray, options: JSONSerialization.WritingOptions.prettyPrinted)
             
-//            //Convert back to string. Usually only do this for debugging
-//            if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8) {
-//                print(JSONString)
-//            }
-//            
-//            //In production, you usually want to try and cast as the root data structure. Here we are casting as a dictionary. If the root object is an array cast as [AnyObject].
-//            json = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers) as! [AnyObject]
-//            
         } catch {
             return
         }
@@ -187,3 +214,4 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     }
 
 }
+
