@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		323691FA1E02EC8500BBCFE4 /* dotty.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 323691F71E02EC8500BBCFE4 /* dotty.ttf */; };
+		323691FB1E02EC8500BBCFE4 /* logan_kruger read me.html in Resources */ = {isa = PBXBuildFile; fileRef = 323691F81E02EC8500BBCFE4 /* logan_kruger read me.html */; };
+		323691FC1E02EC8500BBCFE4 /* logan_kruger read me.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 323691F91E02EC8500BBCFE4 /* logan_kruger read me.rtf */; };
 		76C0BE374642F240A12FC12A /* Pods_drawApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B22978507BF88D95095E7E10 /* Pods_drawApp.framework */; };
 		DC9783F41DF96C7600EFC135 /* DrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9783F31DF96C7600EFC135 /* DrawViewController.swift */; };
 		DCD84BCA1DF6D743009B298C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD84BC91DF6D743009B298C /* AppDelegate.swift */; };
@@ -37,6 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		323691F71E02EC8500BBCFE4 /* dotty.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = dotty.ttf; sourceTree = "<group>"; };
+		323691F81E02EC8500BBCFE4 /* logan_kruger read me.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "logan_kruger read me.html"; sourceTree = "<group>"; };
+		323691F91E02EC8500BBCFE4 /* logan_kruger read me.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "logan_kruger read me.rtf"; sourceTree = "<group>"; };
 		557A2342B44E13079E3128EB /* Pods-drawApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-drawApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-drawApp/Pods-drawApp.debug.xcconfig"; sourceTree = "<group>"; };
 		B22978507BF88D95095E7E10 /* Pods_drawApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_drawApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC9783F31DF96C7600EFC135 /* DrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -90,6 +96,16 @@
 				FE6AE1B53D3FBE082302CAFE /* Pods-drawApp.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		323691F61E02EC8500BBCFE4 /* dotty */ = {
+			isa = PBXGroup;
+			children = (
+				323691F71E02EC8500BBCFE4 /* dotty.ttf */,
+				323691F81E02EC8500BBCFE4 /* logan_kruger read me.html */,
+				323691F91E02EC8500BBCFE4 /* logan_kruger read me.rtf */,
+			);
+			path = dotty;
 			sourceTree = "<group>";
 		};
 		DCD84BBD1DF6D743009B298C = {
@@ -271,8 +287,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCD84BD61DF6D743009B298C /* LaunchScreen.storyboard in Resources */,
+				323691FA1E02EC8500BBCFE4 /* dotty.ttf in Resources */,
+				323691FC1E02EC8500BBCFE4 /* logan_kruger read me.rtf in Resources */,
 				DCD84BD31DF6D743009B298C /* Assets.xcassets in Resources */,
 				DCD84BD11DF6D743009B298C /* Main.storyboard in Resources */,
+				323691FB1E02EC8500BBCFE4 /* logan_kruger read me.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
