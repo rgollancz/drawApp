@@ -33,7 +33,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     @IBOutlet var submitButtonLabel: UIButton!
     var nibColour = UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 1.0).cgColor
     var coordinatesArray = [[Float]]()
-    let wordArray: [String] = ["CAT","TEAPOT","APPLE","BALLOON","FIREWORKS","GIRAFFE","HEADPHONES","MOUNTAIN","ROCK CLIMBING","FAMILY","CELEBRATE","KITE","WORLD MAP","HUMAN MIND","PUG","TIME","SISTINE CHAPEL","CAKE", "CHRISTMAS TREE", "ANNA BEDDOW"]
+    let wordArray: [String] = ["CAT","TEAPOT","APPLE","BALLOON","FIREWORKS","GIRAFFE","HEADPHONES","MOUNTAIN","ROCK CLIMBING","FAMILY","CELEBRATE","KITE","WORLD MAP","HUMAN MIND","PUG","TIME","SISTINE CHAPEL","CAKE", "CHRISTMAS TREE", "KERMIT"]
     var word: String?
     @IBOutlet var colourOptions: UIView!
     
