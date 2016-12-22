@@ -20,7 +20,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     @IBOutlet weak var clear: UIButton!
     @IBOutlet var currentWord: UILabel!
     @IBOutlet var clearButtonLabel: UIButton!
-    let socket = WebSocket(url: URL(string: "ws://localhost:3000/")!)
+    let socket = WebSocket(url: URL(string: "IP address")!)
     var badText: String?
     var lastPoint = CGPoint.zero
     var moved = false
@@ -35,6 +35,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     var nibColour = UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 1.0).cgColor
     var coordinatesArray = [[Float]]()
     let wordArray: [String] = ["CAT","TEAPOT","APPLE","BALLOON","FIREWORKS","GIRAFFE","HEADPHONES","MOUNTAIN","ROCK CLIMBING","FAMILY","CELEBRATE","KITE","WORLD MAP","HUMAN MIND","PUG","TIME","SISTINE CHAPEL","CAKE", "CHRISTMAS TREE", "KERMIT"]
+    
     var word: String?
     @IBOutlet var colourOptions: UIView!
     
@@ -157,7 +158,6 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     }
     
     func websocketDidConnect(_ socket: WebSocket) {
-        socket.write(string: currentWord.text!)
     }
     
     func websocketDidDisconnect(_ socket: WebSocket, error: NSError?) {
@@ -171,6 +171,7 @@ class DrawViewController: UIViewController, WebSocketDelegate {
     }
     
     func sendString() {
+        socket.write(string: currentWord.text!)
         let stringArray = coordinatesArray.flatMap { String(describing: $0) }
         let string = stringArray.joined(separator: ",")
         socket.write(string: string)

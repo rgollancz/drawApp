@@ -16,7 +16,7 @@ class SecondViewController: UIViewController, UITextFieldDelegate, WebSocketDele
     var answer: String?
     var guess: String?
     var receivedDrawing: String?
-    let socket = WebSocket(url: URL(string: "ws://localhost:3000/")!)
+    let socket = WebSocket(url: URL(string: "IP address")!)
 
     @IBOutlet var guessPicture: UITextField!
     @IBOutlet weak var picturePage: UIImageView!
@@ -52,7 +52,9 @@ class SecondViewController: UIViewController, UITextFieldDelegate, WebSocketDele
     }
     
     func checkAnswer() {
-        if guessPicture.text == answer{
+        print(guessPicture.text!)
+        print(answer!)
+        if guessPicture.text == answer {
             responseCorrect.isHidden = false
         }
         else {
@@ -68,6 +70,7 @@ class SecondViewController: UIViewController, UITextFieldDelegate, WebSocketDele
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         guess = guessPicture.text
+        print(guess!)
         checkAnswer()
         guessPicture.text = ""
         return true
@@ -86,6 +89,7 @@ class SecondViewController: UIViewController, UITextFieldDelegate, WebSocketDele
     
     func nameReceived(_ name: String) {
         answer = name;
+        print(answer!)
     }
     
     func drawingReceived(_ drawing: String) {

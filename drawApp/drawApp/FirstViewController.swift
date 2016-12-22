@@ -12,7 +12,7 @@ import UIKit
 final class FirstViewController: UIViewController, UITextFieldDelegate, WebSocketDelegate {
     
     //MARK: Properties
-    let socket = WebSocket(url: URL(string: "ws://localhost:3000/")!)
+    let socket = WebSocket(url: URL(string: "IP address")!)
     @IBOutlet weak var nameText: UITextField!
     var badText : String?
     @IBOutlet weak var myLabel: UILabel!
