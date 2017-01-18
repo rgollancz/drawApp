@@ -7,9 +7,11 @@ Drawsome is realtime, multiplayer iOS drawing game! You can play as a "drawer", 
 ## How it works
 
 Check out a video demo of Drawsome:
+
 [![Drawsome video demo](https://img.youtube.com/vi/LcoMpC1xh1c/0.jpg)](https://www.youtube.com/watch?v=LcoMpC1xh1c)
 
 Behind the scenes, this is how Drawsome works:
+
 ![Drawsome structure](images/drawsome_structure.png)
 
 ## User stories
